@@ -214,6 +214,26 @@
             margin: 0 auto 15px;
         }
 
+        .debug-info {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .debug-toggle {
+            margin-top: 10px;
+            font-size: 12px;
+            color: var(--primary);
+            cursor: pointer;
+            text-align: center;
+        }
+
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -372,16 +392,49 @@
                 </div>
             </div>
         </div>
+
+        <!-- Debug Information -->
+        <div class="debug-toggle" onclick="toggleDebug()">
+            <i class="fas fa-bug"></i> Toggle Debug Info
+        </div>
+        <div class="debug-info" id="debugInfo">
+            <div id="debugContent">No debug information yet...</div>
+        </div>
     </div>
 
     <script>
         // Configuration - Update with your n8n webhook URL
-        const N8N_DASHBOARD_WEBHOOK = 'https://noral.gleeze.com/webhook/dashbord';
+        const N8N_DASHBOARD_WEBHOOK = 'https://noral.gleeze.com/webhook/dashboard-data';
         
         // Chart instances
         let monthlyChart = null;
         let banksChart = null;
         let statusChart = null;
+        let debugLogs = [];
+
+        // Add to debug logs
+        function addDebugLog(message, data = null) {
+            const timestamp = new Date().toLocaleTimeString();
+            let logEntry = `[${timestamp}] ${message}`;
+            if (data) {
+                logEntry += `\n${JSON.stringify(data, null, 2)}`;
+            }
+            debugLogs.push(logEntry);
+            
+            // Update debug display
+            const debugContent = document.getElementById('debugContent');
+            debugContent.textContent = debugLogs.join('\n\n');
+            debugContent.scrollTop = debugContent.scrollHeight;
+            
+            // Also log to console
+            console.log(`[Dashboard] ${message}`, data || '');
+        }
+
+        // Toggle debug info
+        function toggleDebug() {
+            const debugInfo = document.getElementById('debugInfo');
+            debugInfo.style.display = debugInfo.style.display === 'none' ? 'block' : 'none';
+        }
 
         // Theme Toggle
         function toggleTheme() {
@@ -401,51 +454,83 @@
             const fromMonth = document.getElementById('fromMonth').value;
             const toMonth = document.getElementById('toMonth').value;
             
+            addDebugLog('Loading dashboard data...', { fromMonth, toMonth });
+            
             // Show loading
             document.getElementById('loading').style.display = 'block';
             
             try {
+                const requestData = {
+                    action: "get_dashboard_data",
+                    fromMonth: fromMonth,
+                    toMonth: toMonth
+                };
+                
+                addDebugLog('Sending request to webhook', requestData);
+                
                 const response = await fetch(N8N_DASHBOARD_WEBHOOK, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({
-                        action: "get_dashboard_data",
-                        fromMonth: fromMonth,
-                        toMonth: toMonth
-                    })
+                    body: JSON.stringify(requestData)
                 });
+                
+                addDebugLog(`Response status: ${response.status} ${response.statusText}`);
                 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 
-                const data = await response.json();
+                const responseText = await response.text();
+                addDebugLog('Raw response text', responseText);
+                
+                let data;
+                try {
+                    data = JSON.parse(responseText);
+                    addDebugLog('Parsed JSON data', data);
+                } catch (parseError) {
+                    addDebugLog('Error parsing JSON', parseError.message);
+                    throw new Error(`Failed to parse JSON: ${parseError.message}`);
+                }
                 
                 // Hide loading
                 document.getElementById('loading').style.display = 'none';
                 
                 if (data && data.length > 0) {
+                    addDebugLog('Updating dashboard with data');
                     updateDashboard(data[0]);
                 } else {
+                    addDebugLog('No data found in response');
                     // Show zero data if no response
                     resetDashboard();
                 }
                 
             } catch (error) {
+                addDebugLog('Error loading dashboard data', error.message);
                 console.error('Error loading dashboard data:', error);
                 document.getElementById('loading').style.display = 'none';
                 resetDashboard();
+                
+                // Show error in total forms
+                document.getElementById('totalForms').textContent = 'Error';
+                document.getElementById('totalForms').style.color = 'var(--danger)';
             }
         }
 
         // Update Dashboard with Data
         function updateDashboard(dashboardData) {
-            console.log('Dashboard data received:', dashboardData);
+            addDebugLog('Updating dashboard UI with data', dashboardData);
             
             // Update only total forms
-            document.getElementById('totalForms').textContent = dashboardData.totalForms || 0;
+            const totalForms = dashboardData.totalForms || 0;
+            document.getElementById('totalForms').textContent = totalForms;
+            document.getElementById('totalForms').style.color = 'var(--primary)';
+            
+            addDebugLog(`Total forms: ${totalForms}`);
+            addDebugLog(`Months data: ${dashboardData.months ? dashboardData.months.length : 0} entries`);
+            addDebugLog(`Banks data: ${dashboardData.banks ? dashboardData.banks.length : 0} entries`);
+            addDebugLog(`Statuses data: ${dashboardData.statuses ? dashboardData.statuses.length : 0} entries`);
             
             // Update charts
             updateCharts(dashboardData);
@@ -453,7 +538,10 @@
 
         // Reset Dashboard to Zero State
         function resetDashboard() {
+            addDebugLog('Resetting dashboard to zero state');
+            
             document.getElementById('totalForms').textContent = '0';
+            document.getElementById('totalForms').style.color = 'var(--primary)';
             
             // Reset charts
             if (monthlyChart) monthlyChart.destroy();
@@ -466,6 +554,8 @@
 
         // Create Empty Charts
         function createEmptyCharts() {
+            addDebugLog('Creating empty charts');
+            
             const ctx1 = document.getElementById('monthlyChart').getContext('2d');
             monthlyChart = new Chart(ctx1, {
                 type: 'bar',
@@ -563,6 +653,8 @@
                 const months = dashboardData.months.map(m => m.month);
                 const counts = dashboardData.months.map(m => m.count);
                 
+                addDebugLog('Creating monthly chart', { months, counts });
+                
                 const ctx1 = document.getElementById('monthlyChart').getContext('2d');
                 monthlyChart = new Chart(ctx1, {
                     type: 'bar',
@@ -605,6 +697,7 @@
                     }
                 });
             } else {
+                addDebugLog('No monthly data available for chart');
                 createEmptyCharts();
             }
             
@@ -614,6 +707,8 @@
                 const topBanks = dashboardData.banks.slice(0, 5);
                 const bankNames = topBanks.map(b => b.bank);
                 const bankCounts = topBanks.map(b => b.count);
+                
+                addDebugLog('Creating banks chart (top 5)', { bankNames, bankCounts });
                 
                 // Generate colors
                 const bankColors = [
@@ -647,6 +742,8 @@
                         }
                     }
                 });
+            } else {
+                addDebugLog('No banks data available for chart');
             }
             
             // Status Chart
@@ -654,6 +751,8 @@
             if (dashboardData.statuses && dashboardData.statuses.length > 0) {
                 const statusNames = dashboardData.statuses.map(s => s.status);
                 const statusCounts = dashboardData.statuses.map(s => s.count);
+                
+                addDebugLog('Creating status chart', { statusNames, statusCounts });
                 
                 // Generate colors for statuses
                 const statusColors = statusNames.map(status => {
@@ -696,11 +795,15 @@
                         }
                     }
                 });
+            } else {
+                addDebugLog('No status data available for chart');
             }
         }
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
+            addDebugLog('Page loaded, initializing dashboard...');
+            
             // Create empty charts initially
             createEmptyCharts();
             
@@ -713,8 +816,15 @@
             document.getElementById('fromMonth').value = months[currentMonthIndex - 1] || 'JAN';
             document.getElementById('toMonth').value = currentMonth;
             
+            addDebugLog('Default filters set', { 
+                fromMonth: document.getElementById('fromMonth').value,
+                toMonth: document.getElementById('toMonth').value
+            });
+            
             // Load initial data
-            loadDashboardData();
+            setTimeout(() => {
+                loadDashboardData();
+            }, 100);
             
             // Auto-refresh every 5 minutes
             setInterval(loadDashboardData, 5 * 60 * 1000);
