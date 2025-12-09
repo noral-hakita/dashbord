@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" type="x-icon" href="admaa.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - ADMAA</title>
+    <title>ADMAA - Forms Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -12,440 +11,207 @@
             --primary: #3498db;
             --primary-dark: #2980b9;
             --secondary: #2c3e50;
-            --accent: #e74c3c;
-            --light: #ecf0f1;
-            --gray: #7f8c8d;
             --success: #2ecc71;
-            --border: #ddd;
-            --shadow: 0 4px 15px rgba(0,0,0,0.1);
-            --bg-color: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            --form-bg: white;
-            --text-color: #333;
-            --section-bg: #f9fafb;
-            --section-border: #f9fafb;
-            --input-bg: white;
-            --input-border: var(--border);
-            --card-bg: white;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --info: #17a2b8;
+            --light: #ecf0f1;
+            --dark: #343a40;
+            --gray: #7f8c8d;
+            --border: #e1e5e9;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --card-bg: #ffffff;
+            --body-bg: #f8f9fa;
+            --text: #333333;
         }
 
         body.dark-theme {
-            --bg-color: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
-            --form-bg: #34495e;
-            --text-color: #ecf0f1;
-            --section-bg: #2c3e50;
-            --section-border: #4a637d;
-            --input-bg: #4c6883;
-            --input-border: #5a748c;
-            --border: #5a748c;
-            --gray: #bdc3c7;
+            --primary: #3b8bba;
+            --secondary: #34495e;
+            --light: #2c3e50;
+            --dark: #ecf0f1;
+            --body-bg: #1a252f;
             --card-bg: #2c3e50;
-        }
-
-        body.admaa-theme {
-            --bg-color: linear-gradient(135deg, #FFD700 0%, #FFC400 100%);
-            --form-bg: rgba(255, 255, 255, 0.95);
-            --text-color: #333333;
-            --section-bg: rgba(255, 215, 0, 0.7);
-            --section-border: #FFD700;
-            --input-bg: rgba(255, 255, 255, 0.95);
-            --input-border: #FF0000;
-            --border: #FF0000;
-            --primary: #FF0000;
-            --primary-dark: #CC0000;
-            --secondary: #008000;
-            --accent: #FF4500;
-            --success: #008000;
-            --gray: #666666;
-            --light: #FFFAF0;
-            --shadow: 0 4px 15px rgba(255, 0, 0, 0.2);
-            --card-bg: rgba(255, 255, 255, 0.9);
+            --text: #ecf0f1;
+            --border: #34495e;
         }
 
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background: var(--bg-color);
-            margin: 0;
-            padding: 20px;
-            color: var(--text-color);
+            background-color: var(--body-bg);
+            color: var(--text);
+            transition: all 0.3s;
+            padding: 15px;
             min-height: 100vh;
-            transition: background 0.3s, color 0.3s;
         }
 
         .container {
-            max-width: 1800px;
+            max-width: 1400px;
             margin: 0 auto;
-            background-color: var(--form-bg);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            transition: background-color 0.3s, box-shadow 0.3s, border 0.3s;
         }
 
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid var(--border);
+            margin-bottom: 20px;
+            padding: 15px;
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
         }
 
         .logo {
+            font-size: 20px;
             font-weight: bold;
-            font-size: 2rem;
             color: var(--primary);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
-        body.admaa-theme .logo {
-            color: #FF0000;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .header-controls {
+        .controls {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             align-items: center;
         }
 
-        h1 {
-            color: var(--secondary);
-            margin: 0;
-            font-size: 2.5rem;
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s;
         }
 
-        body.admaa-theme h1 {
-            color: #008000;
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
         }
 
-        .dashboard-title {
-            text-align: center;
-            margin-bottom: 30px;
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
         }
 
-        .dashboard-title h2 {
-            color: var(--secondary);
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
         }
 
-        .dashboard-title p {
-            color: var(--gray);
-            font-size: 1.1rem;
+        .btn-secondary:hover {
+            background-color: #1a252f;
         }
 
-        /* Date Filter Section */
-        .filter-section {
-            background: var(--section-bg);
-            padding: 25px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            box-shadow: var(--shadow);
-            border-left: 4px solid var(--primary);
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .filter-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            align-items: end;
-        }
-
-        .form-group {
-            margin-bottom: 0;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--secondary);
-        }
-
-        body.admaa-theme label {
-            color: #008000;
+        .filter-label {
+            font-size: 14px;
+            color: var(--text);
         }
 
         select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid var(--input-border);
-            border-radius: 8px;
-            font-size: 15px;
-            background-color: var(--input-bg);
-            color: var(--text-color);
-            cursor: pointer;
-            transition: all 0.3s;
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background-color: var(--card-bg);
+            color: var(--text);
+            font-size: 13px;
+            width: 100px;
         }
 
         select:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
         }
 
-        .btn {
-            padding: 12px 30px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            justify-content: center;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
-        }
-
-        .btn-secondary {
-            background: var(--gray);
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            background: #6c757d;
-            transform: translateY(-2px);
-        }
-
-        /* Stats Cards */
-        .stats-grid {
+        .dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .stat-card {
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: var(--shadow);
-            border-top: 4px solid var(--primary);
-            transition: transform 0.3s;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .stat-card.total {
-            border-top-color: var(--success);
-        }
-
-        .stat-card.months {
-            border-top-color: var(--accent);
-        }
-
-        .stat-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
             margin-bottom: 15px;
         }
 
-        .stat-title {
-            font-size: 1.1rem;
-            color: var(--gray);
-            font-weight: 600;
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
         }
 
-        .stat-icon {
-            font-size: 2rem;
-            color: var(--primary);
-        }
-
-        .stat-value {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--secondary);
+        .total-forms-card {
+            grid-column: span 3;
+            text-align: center;
             margin-bottom: 10px;
         }
 
-        .stat-change {
-            font-size: 0.9rem;
-            color: var(--success);
+        .chart-card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .total-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 15px 0;
+            line-height: 1;
+        }
+
+        .total-label {
+            font-size: 14px;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text);
             display: flex;
             align-items: center;
-            gap: 5px;
-        }
-
-        /* Charts Section */
-        .charts-section {
-            margin-bottom: 40px;
-        }
-
-        .charts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 25px;
-        }
-
-        @media (max-width: 768px) {
-            .charts-grid {
-                grid-template-columns: 1fr;
-            }
+            gap: 8px;
         }
 
         .chart-container {
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: var(--shadow);
-        }
-
-        .chart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .chart-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--secondary);
-        }
-
-        .chart-controls {
-            display: flex;
-            gap: 10px;
-        }
-
-        .chart-btn {
-            padding: 6px 12px;
-            border: 1px solid var(--border);
-            background: var(--input-bg);
-            color: var(--text-color);
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-        }
-
-        .chart-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .chart-wrapper {
+            height: 220px;
             position: relative;
-            height: 300px;
-            width: 100%;
+            flex-grow: 1;
         }
 
-        /* Tables Section */
-        .tables-section {
-            margin-bottom: 40px;
-        }
-
-        .tables-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 25px;
-        }
-
-        @media (max-width: 768px) {
-            .tables-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .table-container {
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: var(--shadow);
-            overflow-x: auto;
-        }
-
-        .table-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--secondary);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th {
-            background: var(--section-bg);
-            color: var(--secondary);
-            font-weight: 600;
-            text-align: left;
-            padding: 15px;
-            border-bottom: 2px solid var(--border);
-        }
-
-        td {
-            padding: 15px;
-            border-bottom: 1px solid var(--border);
-            color: var(--text-color);
-        }
-
-        tr:hover {
-            background: var(--section-bg);
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: var(--light);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: var(--primary);
-            border-radius: 4px;
-            transition: width 0.3s;
-        }
-
-        /* Loading State */
         .loading {
-            text-align: center;
-            padding: 60px;
             display: none;
+            text-align: center;
+            padding: 30px;
         }
 
         .spinner {
-            border: 4px solid var(--light);
-            border-top: 4px solid var(--primary);
+            border: 3px solid var(--light);
+            border-top: 3px solid var(--primary);
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: 30px;
+            height: 30px;
             animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-
-        body.admaa-theme .spinner {
-            border: 4px solid #FFD700;
-            border-top: 4px solid #FF0000;
+            margin: 0 auto 15px;
         }
 
         @keyframes spin {
@@ -453,158 +219,73 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Error State */
-        .error-message {
-            background: rgba(231, 76, 60, 0.1);
-            border: 2px solid var(--accent);
-            color: var(--accent);
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            margin: 20px 0;
-            display: none;
-        }
-
-        /* Theme Toggle Button */
-        #theme-toggle {
-            background-color: var(--secondary);
-            color: var(--light);
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            transition: background-color 0.3s, color 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        #theme-toggle:hover {
-            background-color: var(--primary-dark);
-        }
-
-        /* Footer */
-        .footer {
-            margin-top: 40px;
-            text-align: center;
-            padding-top: 20px;
-            border-top: 2px solid var(--border);
-            color: var(--gray);
-        }
-
-        .footer a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Month Badges */
-        .month-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            background: var(--section-bg);
-            color: var(--text-color);
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin: 2px;
-            border: 1px solid var(--border);
-        }
-
-        /* Last Updated */
-        .last-updated {
-            text-align: center;
-            color: var(--gray);
-            font-size: 0.9rem;
-            margin-top: 20px;
-            padding: 10px;
-            background: var(--section-bg);
-            border-radius: 8px;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
+        @media (max-width: 1200px) {
+            .dashboard-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
-            
+            .total-forms-card {
+                grid-column: span 3;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            .total-forms-card, .chart-card {
+                grid-column: span 1;
+            }
             .header {
                 flex-direction: column;
-                gap: 20px;
-                text-align: center;
+                gap: 12px;
             }
-            
-            .header-controls {
+            .controls {
+                flex-direction: column;
+                width: 100%;
+            }
+            .filter-group {
                 width: 100%;
                 justify-content: center;
             }
-            
-            .filter-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .btn {
+            select, .btn {
                 width: 100%;
+            }
+            .total-number {
+                font-size: 36px;
             }
         }
 
-        /* Print Styles */
-        @media print {
-            .btn, #theme-toggle, .filter-section {
-                display: none !important;
-            }
-            
+        @media (max-width: 480px) {
             .container {
-                box-shadow: none;
-                padding: 0;
+                padding: 10px;
             }
-            
-            body {
-                background: white;
-                color: black;
+            .header {
+                padding: 12px;
+            }
+            .card {
+                padding: 12px;
+            }
+            .total-number {
+                font-size: 32px;
+            }
+            .chart-container {
+                height: 180px;
             }
         }
     </style>
 </head>
 <body class="light-theme">
     <div class="container">
-        <!-- Header -->
         <div class="header">
             <div class="logo">
                 <i class="fas fa-chart-line"></i>
-                ADMAA Dashboard
+                Forms Dashboard
             </div>
-            <div class="header-controls">
-                <button id="theme-toggle">
-                    <i class="fas fa-moon"></i> Toggle Theme
-                </button>
-                <button class="btn btn-secondary" onclick="printDashboard()">
-                    <i class="fas fa-print"></i> Print
-                </button>
-            </div>
-        </div>
-
-        <!-- Dashboard Title -->
-        <div class="dashboard-title">
-            <h2>Merchant Forms Analytics Dashboard</h2>
-            <p>Real-time insights and statistics for merchant form submissions</p>
-        </div>
-
-        <!-- Date Filter Section -->
-        <div class="filter-section">
-            <div class="filter-grid">
-                <div class="form-group">
-                    <label><i class="fas fa-calendar-alt"></i> From Month</label>
+            <div class="controls">
+                <div class="filter-group">
+                    <span class="filter-label">From:</span>
                     <select id="fromMonth">
-                        <option value="">All Months</option>
+                        <option value="">All</option>
                         <option value="JAN">JAN</option>
                         <option value="FEB">FEB</option>
                         <option value="MAR">MAR</option>
@@ -619,11 +300,10 @@
                         <option value="DEC">DEC</option>
                     </select>
                 </div>
-                
-                <div class="form-group">
-                    <label><i class="fas fa-calendar-alt"></i> To Month</label>
+                <div class="filter-group">
+                    <span class="filter-label">To:</span>
                     <select id="toMonth">
-                        <option value="">All Months</option>
+                        <option value="">All</option>
                         <option value="JAN">JAN</option>
                         <option value="FEB">FEB</option>
                         <option value="MAR">MAR</option>
@@ -638,233 +318,92 @@
                         <option value="DEC">DEC</option>
                     </select>
                 </div>
-                
-                <div class="form-group">
-                    <button class="btn btn-primary" onclick="loadDashboardData()">
-                        <i class="fas fa-sync-alt"></i> Update Dashboard
-                    </button>
-                </div>
+                <button class="btn btn-primary" onclick="loadDashboardData()">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                </button>
+                <button class="btn btn-secondary" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </button>
             </div>
         </div>
 
-        <!-- Loading State -->
         <div class="loading" id="loading">
             <div class="spinner"></div>
-            <p>Loading dashboard data...</p>
+            <p>Loading data...</p>
         </div>
 
-        <!-- Error Message -->
-        <div class="error-message" id="errorMessage">
-            <i class="fas fa-exclamation-triangle"></i>
-            <h3>Error Loading Data</h3>
-            <p id="errorText">Unable to fetch dashboard data. Please try again.</p>
-            <button class="btn btn-primary" onclick="loadDashboardData()" style="margin-top: 15px;">
-                <i class="fas fa-redo"></i> Retry
-            </button>
-        </div>
-
-        <!-- Stats Cards -->
-        <div class="stats-grid" id="statsGrid">
-            <!-- Total Forms Card -->
-            <div class="stat-card total">
-                <div class="stat-header">
-                    <div class="stat-title">Total Forms</div>
-                    <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
+        <div class="dashboard-grid">
+            <!-- Only Total Forms Card -->
+            <div class="card total-forms-card">
+                <div class="card-title">
+                    <i class="fas fa-file-alt"></i> Total Forms Submitted
                 </div>
-                <div class="stat-value" id="totalForms">0</div>
-                <div class="stat-change">
-                    <i class="fas fa-arrow-up"></i>
-                    <span>Overall submissions</span>
-                </div>
+                <div class="total-number" id="totalForms">0</div>
+                <div class="total-label">Forms Submitted in Selected Period</div>
             </div>
 
-            <!-- Top Month Card -->
-            <div class="stat-card months">
-                <div class="stat-header">
-                    <div class="stat-title">Top Performing Month</div>
-                    <div class="stat-icon"><i class="fas fa-chart-bar"></i></div>
+            <!-- Monthly Forms Chart -->
+            <div class="card chart-card">
+                <div class="card-title">
+                    <i class="fas fa-chart-line"></i> Monthly Forms
                 </div>
-                <div class="stat-value" id="topMonth">NOV</div>
-                <div class="stat-change">
-                    <i class="fas fa-chart-line"></i>
-                    <span id="topMonthCount">0 forms</span>
-                </div>
-            </div>
-
-            <!-- Top Bank Card -->
-            <div class="stat-card">
-                <div class="stat-header">
-                    <div class="stat-title">Top Bank</div>
-                    <div class="stat-icon"><i class="fas fa-university"></i></div>
-                </div>
-                <div class="stat-value" id="topBank">FBL</div>
-                <div class="stat-change">
-                    <i class="fas fa-percentage"></i>
-                    <span id="topBankCount">0 forms</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Charts Section -->
-        <div class="charts-section">
-            <div class="charts-grid">
-                <!-- Monthly Trends Chart -->
                 <div class="chart-container">
-                    <div class="chart-header">
-                        <div class="chart-title">
-                            <i class="fas fa-chart-line"></i> Monthly Submission Trends
-                        </div>
-                        <div class="chart-controls">
-                            <button class="chart-btn active" onclick="changeChartType('monthly', 'bar')">Bar</button>
-                            <button class="chart-btn" onclick="changeChartType('monthly', 'line')">Line</button>
-                        </div>
-                    </div>
-                    <div class="chart-wrapper">
-                        <canvas id="monthlyChart"></canvas>
-                    </div>
+                    <canvas id="monthlyChart"></canvas>
                 </div>
+            </div>
 
-                <!-- Bank Distribution Chart -->
+            <!-- Banks Distribution Chart -->
+            <div class="card chart-card">
+                <div class="card-title">
+                    <i class="fas fa-chart-pie"></i> Banks
+                </div>
                 <div class="chart-container">
-                    <div class="chart-header">
-                        <div class="chart-title">
-                            <i class="fas fa-pie-chart"></i> Bank Distribution
-                        </div>
-                        <div class="chart-controls">
-                            <button class="chart-btn active" onclick="changeChartType('bank', 'doughnut')">Donut</button>
-                            <button class="chart-btn" onclick="changeChartType('bank', 'pie')">Pie</button>
-                        </div>
-                    </div>
-                    <div class="chart-wrapper">
-                        <canvas id="bankChart"></canvas>
-                    </div>
+                    <canvas id="banksChart"></canvas>
                 </div>
             </div>
-        </div>
 
-        <!-- Tables Section -->
-        <div class="tables-section">
-            <div class="tables-grid">
-                <!-- Banks Table -->
-                <div class="table-container">
-                    <div class="table-title">
-                        <i class="fas fa-university"></i> Banks Performance
-                    </div>
-                    <div class="table-wrapper">
-                        <table id="banksTable">
-                            <thead>
-                                <tr>
-                                    <th>Bank</th>
-                                    <th>Forms Count</th>
-                                    <th>Percentage</th>
-                                    <th>Progress</th>
-                                </tr>
-                            </thead>
-                            <tbody id="banksTableBody">
-                                <!-- Data will be populated here -->
-                            </tbody>
-                        </table>
-                    </div>
+            <!-- Status Distribution Chart -->
+            <div class="card chart-card">
+                <div class="card-title">
+                    <i class="fas fa-chart-bar"></i> Status
                 </div>
-
-                <!-- Status Table -->
-                <div class="table-container">
-                    <div class="table-title">
-                        <i class="fas fa-tasks"></i> Status Distribution
-                    </div>
-                    <div class="table-wrapper">
-                        <table id="statusTable">
-                            <thead>
-                                <tr>
-                                    <th>Status</th>
-                                    <th>Count</th>
-                                    <th>Percentage</th>
-                                    <th>Progress</th>
-                                </tr>
-                            </thead>
-                            <tbody id="statusTableBody">
-                                <!-- Data will be populated here -->
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="chart-container">
+                    <canvas id="statusChart"></canvas>
                 </div>
             </div>
-        </div>
-
-        <!-- Last Updated -->
-        <div class="last-updated" id="lastUpdated">
-            <i class="fas fa-clock"></i> Last updated: <span id="updateTime">Never</span>
-        </div>
-
-        <!-- Footer -->
-        <div class="footer">
-            <p>ADMAA Retail Enablement Service (Pvt.) Ltd.<br>
-            <i class="fas fa-globe"></i> <a href="https://admaa.pk" target="_blank">admaa.pk</a> | 
-            <i class="fas fa-phone"></i> 0300-8332737</p>
-            <p style="font-size: 0.9rem; margin-top: 10px;">
-                Dashboard auto-refreshes every 5 minutes | 
-                <a href="javascript:void(0)" onclick="loadDashboardData()">
-                    <i class="fas fa-sync-alt"></i> Refresh Now
-                </a>
-            </p>
         </div>
     </div>
 
     <script>
-        // Configuration
-        const N8N_DASHBOARD_WEBHOOK = 'https://noral.gleeze.com/webhook/dashboard'; // Update with your n8n webhook URL
-        let dashboardData = null;
-        let monthlyChart = null;
-        let bankChart = null;
+        // Configuration - Update with your n8n webhook URL
+        const N8N_DASHBOARD_WEBHOOK = 'https://noral.gleeze.com/webhook/dashboard-data';
         
-        // Theme Management
-        const themes = ['light-theme', 'dark-theme', 'admaa-theme'];
-        let currentThemeIndex = 0;
+        // Chart instances
+        let monthlyChart = null;
+        let banksChart = null;
+        let statusChart = null;
 
-        document.getElementById('theme-toggle').addEventListener('click', () => {
-            themes.forEach(theme => document.body.classList.remove(theme));
-            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-            const nextTheme = themes[currentThemeIndex];
-            document.body.classList.add(nextTheme);
+        // Theme Toggle
+        function toggleTheme() {
+            const body = document.body;
+            const isDark = body.classList.contains('dark-theme');
+            body.classList.remove(isDark ? 'dark-theme' : 'light-theme');
+            body.classList.add(isDark ? 'light-theme' : 'dark-theme');
             
-            const themeToggle = document.getElementById('theme-toggle');
-            const icon = themeToggle.querySelector('i');
-            
-            switch(nextTheme) {
-                case 'light-theme':
-                    icon.className = 'fas fa-moon';
-                    themeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
-                    break;
-                case 'dark-theme':
-                    icon.className = 'fas fa-palette';
-                    themeToggle.innerHTML = '<i class="fas fa-palette"></i> ADMAA Theme';
-                    break;
-                case 'admaa-theme':
-                    icon.className = 'fas fa-sun';
-                    themeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
-                    break;
-            }
-            
-            // Update charts if they exist
+            // Update charts theme if they exist
             if (monthlyChart) monthlyChart.update();
-            if (bankChart) bankChart.update();
-        });
+            if (banksChart) banksChart.update();
+            if (statusChart) statusChart.update();
+        }
 
-        // Initialize theme
-        document.body.classList.add(themes[currentThemeIndex]);
-
-        // Main function to load dashboard data
+        // Load Dashboard Data
         async function loadDashboardData() {
             const fromMonth = document.getElementById('fromMonth').value;
             const toMonth = document.getElementById('toMonth').value;
             
             // Show loading
             document.getElementById('loading').style.display = 'block';
-            document.getElementById('errorMessage').style.display = 'none';
-            document.getElementById('statsGrid').style.display = 'none';
-            document.querySelector('.charts-section').style.display = 'none';
-            document.querySelector('.tables-section').style.display = 'none';
-
+            
             try {
                 const response = await fetch(N8N_DASHBOARD_WEBHOOK, {
                     method: 'POST',
@@ -888,136 +427,85 @@
                 document.getElementById('loading').style.display = 'none';
                 
                 if (data && data.length > 0) {
-                    dashboardData = data[0];
-                    updateDashboardUI();
-                    updateLastUpdated();
+                    updateDashboard(data[0]);
                 } else {
-                    throw new Error('No data received from server');
+                    // Show zero data if no response
+                    resetDashboard();
                 }
                 
             } catch (error) {
-                console.error('Dashboard Error:', error);
+                console.error('Error loading dashboard data:', error);
                 document.getElementById('loading').style.display = 'none';
-                document.getElementById('errorText').textContent = error.message;
-                document.getElementById('errorMessage').style.display = 'block';
+                resetDashboard();
             }
         }
 
-        // Update the dashboard UI with new data
-        function updateDashboardUI() {
-            if (!dashboardData) return;
+        // Update Dashboard with Data
+        function updateDashboard(dashboardData) {
+            console.log('Dashboard data received:', dashboardData);
             
-            // Update stats cards
-            document.getElementById('totalForms').textContent = dashboardData.totalForms.toLocaleString();
-            
-            // Find top month
-            let topMonth = { month: 'N/A', count: 0 };
-            if (dashboardData.months && dashboardData.months.length > 0) {
-                topMonth = dashboardData.months.reduce((prev, current) => 
-                    (prev.count > current.count) ? prev : current
-                );
-            }
-            document.getElementById('topMonth').textContent = topMonth.month;
-            document.getElementById('topMonthCount').textContent = `${topMonth.count.toLocaleString()} forms`;
-            
-            // Find top bank
-            let topBank = { bank: 'N/A', count: 0 };
-            if (dashboardData.banks && dashboardData.banks.length > 0) {
-                topBank = dashboardData.banks.reduce((prev, current) => 
-                    (prev.count > current.count) ? prev : current
-                );
-            }
-            document.getElementById('topBank').textContent = topBank.bank;
-            document.getElementById('topBankCount').textContent = `${topBank.count.toLocaleString()} forms`;
-            
-            // Show all sections
-            document.getElementById('statsGrid').style.display = 'grid';
-            document.querySelector('.charts-section').style.display = 'block';
-            document.querySelector('.tables-section').style.display = 'block';
+            // Update only total forms
+            document.getElementById('totalForms').textContent = dashboardData.totalForms || 0;
             
             // Update charts
-            updateCharts();
-            
-            // Update tables
-            updateTables();
+            updateCharts(dashboardData);
         }
 
-        // Update charts
-        function updateCharts() {
-            // Monthly Chart
-            const monthlyCtx = document.getElementById('monthlyChart').getContext('2d');
-            const months = dashboardData.months.map(m => m.month);
-            const monthCounts = dashboardData.months.map(m => m.count);
+        // Reset Dashboard to Zero State
+        function resetDashboard() {
+            document.getElementById('totalForms').textContent = '0';
             
+            // Reset charts
             if (monthlyChart) monthlyChart.destroy();
+            if (banksChart) banksChart.destroy();
+            if (statusChart) statusChart.destroy();
             
-            monthlyChart = new Chart(monthlyCtx, {
+            // Create empty charts
+            createEmptyCharts();
+        }
+
+        // Create Empty Charts
+        function createEmptyCharts() {
+            const ctx1 = document.getElementById('monthlyChart').getContext('2d');
+            monthlyChart = new Chart(ctx1, {
                 type: 'bar',
                 data: {
-                    labels: months,
+                    labels: ['No Data'],
                     datasets: [{
-                        label: 'Forms Submitted',
-                        data: monthCounts,
-                        backgroundColor: getThemeColors(monthCounts.length, true),
-                        borderColor: getThemeColors(monthCounts.length, false),
-                        borderWidth: 2,
-                        borderRadius: 6
+                        label: 'Forms',
+                        data: [0],
+                        backgroundColor: '#3498db',
+                        borderColor: '#2980b9',
+                        borderWidth: 1
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return `${context.label}: ${context.raw.toLocaleString()} forms`;
-                                }
-                            }
-                        }
-                    },
                     scales: {
                         y: {
                             beginAtZero: true,
                             ticks: {
-                                callback: function(value) {
-                                    return value.toLocaleString();
-                                }
-                            },
-                            grid: {
-                                color: 'rgba(0, 0, 0, 0.1)'
+                                precision: 0
                             }
-                        },
-                        x: {
-                            grid: {
-                                color: 'rgba(0, 0, 0, 0.1)'
-                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
                         }
                     }
                 }
             });
-
-            // Bank Chart (Top 10 banks)
-            const bankCtx = document.getElementById('bankChart').getContext('2d');
-            const sortedBanks = [...dashboardData.banks].sort((a, b) => b.count - a.count);
-            const topBanks = sortedBanks.slice(0, 10);
-            const bankNames = topBanks.map(b => b.bank);
-            const bankCounts = topBanks.map(b => b.count);
             
-            if (bankChart) bankChart.destroy();
-            
-            bankChart = new Chart(bankCtx, {
-                type: 'doughnut',
+            const ctx2 = document.getElementById('banksChart').getContext('2d');
+            banksChart = new Chart(ctx2, {
+                type: 'pie',
                 data: {
-                    labels: bankNames,
+                    labels: ['No Data'],
                     datasets: [{
-                        data: bankCounts,
-                        backgroundColor: getThemeColors(bankCounts.length, true),
-                        borderColor: getThemeColors(bankCounts.length, false),
-                        borderWidth: 2
+                        data: [100],
+                        backgroundColor: ['#e1e5e9']
                     }]
                 },
                 options: {
@@ -1027,212 +515,209 @@
                         legend: {
                             position: 'right',
                             labels: {
-                                padding: 20,
-                                usePointStyle: true
-                            }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    const percentage = ((context.raw / dashboardData.totalForms) * 100).toFixed(1);
-                                    return `${context.label}: ${context.raw.toLocaleString()} forms (${percentage}%)`;
+                                boxWidth: 10,
+                                padding: 10,
+                                font: {
+                                    size: 11
                                 }
                             }
                         }
+                    }
+                }
+            });
+            
+            const ctx3 = document.getElementById('statusChart').getContext('2d');
+            statusChart = new Chart(ctx3, {
+                type: 'doughnut',
+                data: {
+                    labels: ['No Data'],
+                    datasets: [{
+                        data: [100],
+                        backgroundColor: ['#e1e5e9']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                boxWidth: 10,
+                                padding: 10,
+                                font: {
+                                    size: 11
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Update Charts with Data
+        function updateCharts(dashboardData) {
+            // Monthly Chart
+            if (monthlyChart) monthlyChart.destroy();
+            if (dashboardData.months && dashboardData.months.length > 0) {
+                const months = dashboardData.months.map(m => m.month);
+                const counts = dashboardData.months.map(m => m.count);
+                
+                const ctx1 = document.getElementById('monthlyChart').getContext('2d');
+                monthlyChart = new Chart(ctx1, {
+                    type: 'bar',
+                    data: {
+                        labels: months,
+                        datasets: [{
+                            label: 'Forms Submitted',
+                            data: counts,
+                            backgroundColor: '#3498db',
+                            borderColor: '#2980b9',
+                            borderWidth: 1
+                        }]
                     },
-                    cutout: '50%'
-                }
-            });
-        }
-
-        // Update tables
-        function updateTables() {
-            // Banks Table
-            const banksTableBody = document.getElementById('banksTableBody');
-            banksTableBody.innerHTML = '';
-            
-            const sortedBanks = [...dashboardData.banks].sort((a, b) => b.count - a.count);
-            
-            sortedBanks.forEach(bank => {
-                const percentage = ((bank.count / dashboardData.totalForms) * 100).toFixed(1);
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td><strong>${bank.bank}</strong></td>
-                    <td>${bank.count.toLocaleString()}</td>
-                    <td>${percentage}%</td>
-                    <td>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: ${percentage}%"></div>
-                        </div>
-                    </td>
-                `;
-                banksTableBody.appendChild(row);
-            });
-
-            // Status Table
-            const statusTableBody = document.getElementById('statusTableBody');
-            statusTableBody.innerHTML = '';
-            
-            const sortedStatuses = [...dashboardData.statuses].sort((a, b) => b.count - a.count);
-            
-            sortedStatuses.forEach(status => {
-                const percentage = ((status.count / dashboardData.totalForms) * 100).toFixed(1);
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td><strong>${status.status}</strong></td>
-                    <td>${status.count.toLocaleString()}</td>
-                    <td>${percentage}%</td>
-                    <td>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: ${percentage}%"></div>
-                        </div>
-                    </td>
-                `;
-                statusTableBody.appendChild(row);
-            });
-        }
-
-        // Change chart type
-        function changeChartType(chartName, type) {
-            if (chartName === 'monthly') {
-                // Update button states
-                document.querySelectorAll('#monthlyChart').closest('.chart-container').querySelectorAll('.chart-btn')
-                    .forEach(btn => btn.classList.remove('active'));
-                event.target.classList.add('active');
-                
-                // Change chart type
-                monthlyChart.config.type = type;
-                monthlyChart.update();
-            } else if (chartName === 'bank') {
-                // Update button states
-                document.querySelectorAll('#bankChart').closest('.chart-container').querySelectorAll('.chart-btn')
-                    .forEach(btn => btn.classList.remove('active'));
-                event.target.classList.add('active');
-                
-                // Change chart type
-                bankChart.config.type = type;
-                bankChart.update();
-            }
-        }
-
-        // Get theme-appropriate colors
-        function getThemeColors(count, isBackground = true) {
-            const colors = [];
-            const theme = themes[currentThemeIndex];
-            
-            if (theme === 'dark-theme') {
-                // Dark theme colors
-                for (let i = 0; i < count; i++) {
-                    if (isBackground) {
-                        colors.push(`hsla(${(i * 360 / count)}, 70%, 50%, 0.7)`);
-                    } else {
-                        colors.push(`hsla(${(i * 360 / count)}, 70%, 50%, 1)`);
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    precision: 0,
+                                    font: {
+                                        size: 10
+                                    }
+                                }
+                            },
+                            x: {
+                                ticks: {
+                                    font: {
+                                        size: 10
+                                    }
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        }
                     }
-                }
-            } else if (theme === 'admaa-theme') {
-                // ADMAA theme colors (red/green/gold)
-                const admaaColors = ['#FF0000', '#008000', '#FFD700', '#CC0000', '#006400', '#FFA500'];
-                for (let i = 0; i < count; i++) {
-                    colors.push(admaaColors[i % admaaColors.length]);
-                }
+                });
             } else {
-                // Light theme colors
-                for (let i = 0; i < count; i++) {
-                    if (isBackground) {
-                        colors.push(`hsla(${(i * 360 / count)}, 70%, 65%, 0.7)`);
-                    } else {
-                        colors.push(`hsla(${(i * 360 / count)}, 70%, 45%, 1)`);
-                    }
-                }
+                createEmptyCharts();
             }
             
-            return colors;
+            // Banks Chart (Top 5)
+            if (banksChart) banksChart.destroy();
+            if (dashboardData.banks && dashboardData.banks.length > 0) {
+                const topBanks = dashboardData.banks.slice(0, 5);
+                const bankNames = topBanks.map(b => b.bank);
+                const bankCounts = topBanks.map(b => b.count);
+                
+                // Generate colors
+                const bankColors = [
+                    '#3498db', '#2ecc71', '#e74c3c', '#f39c12', '#9b59b6'
+                ];
+                
+                const ctx2 = document.getElementById('banksChart').getContext('2d');
+                banksChart = new Chart(ctx2, {
+                    type: 'pie',
+                    data: {
+                        labels: bankNames,
+                        datasets: [{
+                            data: bankCounts,
+                            backgroundColor: bankColors.slice(0, topBanks.length)
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    boxWidth: 10,
+                                    padding: 8,
+                                    font: {
+                                        size: 10
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            // Status Chart
+            if (statusChart) statusChart.destroy();
+            if (dashboardData.statuses && dashboardData.statuses.length > 0) {
+                const statusNames = dashboardData.statuses.map(s => s.status);
+                const statusCounts = dashboardData.statuses.map(s => s.count);
+                
+                // Generate colors for statuses
+                const statusColors = statusNames.map(status => {
+                    if (status.includes('DEPLOYED')) return '#2ecc71';
+                    if (status.includes('PENDING')) return '#f39c12';
+                    if (status.includes('SENT')) return '#3498db';
+                    if (status.includes('PRINT')) return '#9b59b6';
+                    if (status.includes('CLOSED')) return '#95a5a6';
+                    if (status.includes('IBAN')) return '#1abc9c';
+                    if (status.includes('HANDED')) return '#e74c3c';
+                    if (status.includes('RETURN')) return '#c0392b';
+                    if (status.includes('WAITING')) return '#f1c40f';
+                    return '#7f8c8d';
+                });
+                
+                const ctx3 = document.getElementById('statusChart').getContext('2d');
+                statusChart = new Chart(ctx3, {
+                    type: 'doughnut',
+                    data: {
+                        labels: statusNames,
+                        datasets: [{
+                            data: statusCounts,
+                            backgroundColor: statusColors
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    boxWidth: 10,
+                                    padding: 8,
+                                    font: {
+                                        size: 10
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
         }
 
-        // Update last updated timestamp
-        function updateLastUpdated() {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-            const dateString = now.toLocaleDateString();
-            document.getElementById('updateTime').textContent = `${dateString} ${timeString}`;
-        }
-
-        // Print dashboard
-        function printDashboard() {
-            window.print();
-        }
-
-        // Auto-refresh every 5 minutes
-        setInterval(loadDashboardData, 5 * 60 * 1000);
-
-        // Load data on page load
+        // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
+            // Create empty charts initially
+            createEmptyCharts();
+            
+            // Set current month and previous month as default
+            const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+            const now = new Date();
+            const currentMonthIndex = now.getMonth(); // 0-11
+            const currentMonth = months[currentMonthIndex];
+            
+            document.getElementById('fromMonth').value = months[currentMonthIndex - 1] || 'JAN';
+            document.getElementById('toMonth').value = currentMonth;
+            
+            // Load initial data
             loadDashboardData();
             
-            // Add enter key support for filters
-            document.getElementById('fromMonth').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') loadDashboardData();
-            });
-            document.getElementById('toMonth').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') loadDashboardData();
-            });
-        });
-
-        // Export data as CSV
-        function exportData() {
-            if (!dashboardData) {
-                alert('No data to export. Please load dashboard data first.');
-                return;
-            }
-
-            // Create CSV content
-            let csvContent = "ADMAA Dashboard Data\n\n";
-            
-            // Add summary
-            csvContent += "SUMMARY\n";
-            csvContent += `Total Forms,${dashboardData.totalForms}\n\n`;
-            
-            // Add months data
-            csvContent += "MONTHLY DATA\n";
-            csvContent += "Month,Count\n";
-            dashboardData.months.forEach(month => {
-                csvContent += `${month.month},${month.count}\n`;
-            });
-            csvContent += "\n";
-            
-            // Add banks data
-            csvContent += "BANKS DATA\n";
-            csvContent += "Bank,Count\n";
-            dashboardData.banks.forEach(bank => {
-                csvContent += `${bank.bank},${bank.count}\n`;
-            });
-            csvContent += "\n";
-            
-            // Add status data
-            csvContent += "STATUS DATA\n";
-            csvContent += "Status,Count\n";
-            dashboardData.statuses.forEach(status => {
-                csvContent += `${status.status},${status.count}\n`;
-            });
-            
-            // Create download link
-            const blob = new Blob([csvContent], { type: 'text/csv' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `admaa_dashboard_${new Date().toISOString().split('T')[0]}.csv`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        }
-
-        // Add export button to header controls
-        document.addEventListener('DOMContentLoaded', function() {
-            const exportBtn = document.createElement('button');
-            exportBtn.className = 'btn btn-success';
-            exportBtn.innerHTML = '<i class="fas fa-download"></i> Export Data';
-            exportBtn.onclick = exportData;
-            document.querySelector('.header-controls').appendChild(exportBtn);
+            // Auto-refresh every 5 minutes
+            setInterval(loadDashboardData, 5 * 60 * 1000);
         });
     </script>
 </body>
