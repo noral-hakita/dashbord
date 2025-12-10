@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="admaa.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADMAA - Forms Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -52,47 +53,259 @@
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1800px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto auto auto;
+            gap: 15px;
         }
 
+        /* Top Header - spans full width */
         .header {
+            grid-column: 1 / -1;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
             padding: 15px;
             background: var(--card-bg);
             border-radius: 8px;
             box-shadow: var(--shadow);
+            margin-bottom: 15px;
         }
 
         .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Top Container - Dashboard Controls */
+        .top-container {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        /* Dashboard Controls (Left side of top) */
+        .dashboard-controls {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dashboard-title {
             font-size: 20px;
             font-weight: bold;
             color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .theme-toggle {
+            margin-top: auto;
+        }
+
+        /* Regions Container (Right side of top) */
+        .regions-container {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .regions-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .regions-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text);
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .controls {
+        .regions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .region-card {
+            background: rgba(52, 152, 219, 0.1);
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
             display: flex;
-            gap: 12px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .region-card:hover {
+            background: rgba(52, 152, 219, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .region-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+
+        .region-count {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        /* Middle Row - Filters and Total Forms */
+        .middle-container {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        /* Filters Container (Left side of middle) */
+        .filters-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .filter-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .filter-group {
+            flex: 1;
+        }
+
+        .filter-label {
+            font-size: 12px;
+            color: var(--text);
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        select {
+            padding: 8px 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background-color: var(--card-bg);
+            color: var(--text);
+            font-size: 12px;
+            width: 100%;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+
+        /* Total Forms Container (Right side of middle) */
+        .total-forms-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
         }
 
+        .total-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 10px 0;
+            line-height: 1;
+        }
+
+        .total-label {
+            font-size: 14px;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Bottom Container - Charts */
+        .bottom-container {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 15px;
+        }
+
+        .chart-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chart-container {
+            height: 200px;
+            position: relative;
+            flex-grow: 1;
+        }
+
+        /* Buttons */
         .btn {
-            padding: 8px 16px;
+            padding: 8px 12px;
             border: none;
             border-radius: 6px;
             cursor: pointer;
             font-weight: 500;
-            font-size: 14px;
+            font-size: 13px;
             display: flex;
             align-items: center;
             gap: 6px;
             transition: all 0.3s;
+            width: 100%;
+            justify-content: center;
         }
 
         .btn-primary {
@@ -104,6 +317,19 @@
             background-color: var(--primary-dark);
         }
 
+        .btn-success {
+            background-color: var(--success);
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            width: auto;
+            margin-top: 5px;
+        }
+
+        .btn-success:hover {
+            background-color: #27ae60;
+        }
+
         .btn-secondary {
             background-color: var(--secondary);
             color: white;
@@ -113,105 +339,136 @@
             background-color: #1a252f;
         }
 
-        .filter-group {
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .modal-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text);
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .filter-label {
-            font-size: 14px;
-            color: var(--text);
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: var(--gray);
+            cursor: pointer;
+            transition: color 0.3s;
         }
 
-        select {
-            padding: 8px 12px;
+        .close-btn:hover {
+            color: var(--danger);
+        }
+
+        .modal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .modal-item {
+            background: rgba(52, 152, 219, 0.1);
             border: 1px solid var(--border);
             border-radius: 6px;
-            background-color: var(--card-bg);
-            color: var(--text);
-            font-size: 13px;
-            width: 100px;
-        }
-
-        select:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
-        }
-
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: var(--shadow);
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
             display: flex;
             flex-direction: column;
-        }
-
-        .total-forms-card {
-            grid-column: span 3;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            margin-bottom: 10px;
         }
 
-        .chart-card {
-            display: flex;
-            flex-direction: column;
+        .modal-item:hover {
+            background: rgba(52, 152, 219, 0.2);
+            transform: translateY(-2px);
         }
 
-        .total-number {
-            font-size: 48px;
+        .modal-item-name {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+
+        .modal-item-count {
+            font-size: 16px;
             font-weight: bold;
             color: var(--primary);
-            margin: 15px 0;
-            line-height: 1;
-        }
-
-        .total-label {
-            font-size: 14px;
-            color: var(--gray);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .card-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--text);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .chart-container {
-            height: 220px;
-            position: relative;
-            flex-grow: 1;
         }
 
         .loading {
             display: none;
             text-align: center;
-            padding: 30px;
+            padding: 20px;
+            grid-column: 1 / -1;
+        }
+
+        .region-loading {
+            display: none;
+            text-align: center;
+            padding: 5px;
+            font-size: 11px;
+            color: var(--gray);
+            margin-top: 5px;
         }
 
         .spinner {
             border: 3px solid var(--light);
             border-top: 3px solid var(--primary);
             border-radius: 50%;
-            width: 30px;
-            height: 30px;
+            width: 25px;
+            height: 25px;
             animation: spin 1s linear infinite;
-            margin: 0 auto 15px;
+            margin: 0 auto 10px;
+        }
+
+        .small-spinner {
+            border: 2px solid var(--light);
+            border-top: 2px solid var(--success);
+            border-radius: 50%;
+            width: 14px;
+            height: 14px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-right: 5px;
         }
 
         @keyframes spin {
@@ -219,131 +476,183 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* Responsive Design */
         @media (max-width: 1200px) {
-            .dashboard-grid {
-                grid-template-columns: repeat(3, 1fr);
+            .container {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto auto auto auto;
             }
-            .total-forms-card {
-                grid-column: span 3;
+            
+            .top-container {
+                grid-column: 1;
+                grid-template-columns: 1fr;
+            }
+            
+            .middle-container {
+                grid-column: 1;
+                grid-template-columns: 1fr;
+            }
+            
+            .bottom-container {
+                grid-column: 1;
+                grid-template-columns: 1fr;
+            }
+            
+            .regions-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
         @media (max-width: 768px) {
-            .dashboard-grid {
+            .regions-grid {
                 grid-template-columns: 1fr;
             }
-            .total-forms-card, .chart-card {
-                grid-column: span 1;
-            }
+            
             .header {
                 flex-direction: column;
-                gap: 12px;
+                gap: 10px;
             }
-            .controls {
+            
+            .filter-row {
                 flex-direction: column;
-                width: 100%;
             }
-            .filter-group {
-                width: 100%;
-                justify-content: center;
+            
+            .modal-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             }
-            select, .btn {
-                width: 100%;
-            }
-            .total-number {
-                font-size: 36px;
+            
+            .bottom-container {
+                grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 480px) {
             .container {
                 padding: 10px;
+                gap: 10px;
             }
-            .header {
+            
+            .header, .card {
                 padding: 12px;
             }
-            .card {
-                padding: 12px;
-            }
+            
             .total-number {
-                font-size: 32px;
+                font-size: 28px;
             }
+            
             .chart-container {
                 height: 180px;
+            }
+            
+            .modal-content {
+                width: 95%;
+                padding: 15px;
             }
         }
     </style>
 </head>
 <body class="light-theme">
     <div class="container">
+        <!-- Header -->
         <div class="header">
             <div class="logo">
                 <i class="fas fa-chart-line"></i>
-                Forms Dashboard
+                ADMAA Forms Dashboard
             </div>
-            <div class="controls">
-                <div class="filter-group">
-                    <span class="filter-label">From:</span>
-                    <select id="fromMonth">
-                        <option value="">All</option>
-                        <option value="JAN">JAN</option>
-                        <option value="FEB">FEB</option>
-                        <option value="MAR">MAR</option>
-                        <option value="APR">APR</option>
-                        <option value="MAY">MAY</option>
-                        <option value="JUN">JUN</option>
-                        <option value="JUL">JUL</option>
-                        <option value="AUG">AUG</option>
-                        <option value="SEP">SEP</option>
-                        <option value="OCT">OCT</option>
-                        <option value="NOV">NOV</option>
-                        <option value="DEC">DEC</option>
-                    </select>
+            <div class="theme-toggle">
+                <button class="btn btn-secondary" onclick="toggleTheme()">
+                <i class="fas fa-moon"></i> Toggle Theme
+                </button>
+             </div>
+        </div>
+
+        <!-- Top Container: Dashboard Controls (Left) and Regions (Right) -->
+        <div class="top-container">
+            <!-- Left: Dashboard Controls -->
+            <div class="dashboard-controls">
+                <div class="dashboard-title">
+                    <i class="fas fa-tachometer-alt"></i>
+                    Employee Status
                 </div>
-                <div class="filter-group">
-                    <span class="filter-label">To:</span>
-                    <select id="toMonth">
-                        <option value="">All</option>
-                        <option value="JAN">JAN</option>
-                        <option value="FEB">FEB</option>
-                        <option value="MAR">MAR</option>
-                        <option value="APR">APR</option>
-                        <option value="MAY">MAY</option>
-                        <option value="JUN">JUN</option>
-                        <option value="JUL">JUL</option>
-                        <option value="AUG">AUG</option>
-                        <option value="SEP">SEP</option>
-                        <option value="OCT">OCT</option>
-                        <option value="NOV">NOV</option>
-                        <option value="DEC">DEC</option>
-                    </select>
+            </div>
+
+            <!-- Right: Regions Container -->
+            <div class="regions-container">
+                <div class="regions-header">
+                    <div class="regions-title">
+                        <i class="fas fa-map-marker-alt"></i> Forms by Region
+                    </div>
+                    <button class="btn btn-success" onclick="refreshRegionData()" id="regionRefreshBtn">
+                        <i class="fas fa-sync-alt"></i> Refresh Regions
+                    </button>
+                </div>
+                <div class="region-loading" id="regionLoading">
+                    <div class="small-spinner"></div> Loading...
+                </div>
+                <div class="regions-grid" id="regionsGrid">
+                    <!-- Regions will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Middle Container: Filters (Left) and Total Forms (Right) -->
+        <div class="middle-container">
+            <!-- Left: Filters -->
+            <div class="filters-card">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label class="filter-label">From Month:</label>
+                        <select id="fromMonth">
+                            <option value="">All</option>
+                            <option value="JAN">JAN</option>
+                            <option value="FEB">FEB</option>
+                            <option value="MAR">MAR</option>
+                            <option value="APR">APR</option>
+                            <option value="MAY">MAY</option>
+                            <option value="JUN">JUN</option>
+                            <option value="JUL">JUL</option>
+                            <option value="AUG">AUG</option>
+                            <option value="SEP">SEP</option>
+                            <option value="OCT">OCT</option>
+                            <option value="NOV">NOV</option>
+                            <option value="DEC">DEC</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">To Month:</label>
+                        <select id="toMonth">
+                            <option value="">All</option>
+                            <option value="JAN">JAN</option>
+                            <option value="FEB">FEB</option>
+                            <option value="MAR">MAR</option>
+                            <option value="APR">APR</option>
+                            <option value="MAY">MAY</option>
+                            <option value="JUN">JUN</option>
+                            <option value="JUL">JUL</option>
+                            <option value="AUG">AUG</option>
+                            <option value="SEP">SEP</option>
+                            <option value="OCT">OCT</option>
+                            <option value="NOV">NOV</option>
+                            <option value="DEC">DEC</option>
+                        </select>
+                    </div>
                 </div>
                 <button class="btn btn-primary" onclick="loadDashboardData()">
-                    <i class="fas fa-sync-alt"></i> Refresh
-                </button>
-                <button class="btn btn-secondary" onclick="toggleTheme()">
-                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sync-alt"></i> Refresh Dashboard
                 </button>
             </div>
-        </div>
 
-        <div class="loading" id="loading">
-            <div class="spinner"></div>
-            <p>Loading data...</p>
-        </div>
-
-        <div class="dashboard-grid">
-            <!-- Only Total Forms Card -->
-            <div class="card total-forms-card">
-                <div class="card-title">
-                    <i class="fas fa-file-alt"></i> Total Forms Submitted
-                </div>
+            <!-- Right: Total Forms -->
+            <div class="total-forms-card">
                 <div class="total-number" id="totalForms">0</div>
-                <div class="total-label">Forms Submitted in Selected Period</div>
+                <div class="total-label">Total Forms Submitted</div>
             </div>
+        </div>
 
-            <!-- Monthly Forms Chart -->
-            <div class="card chart-card">
+        <!-- Bottom Container: Charts -->
+        <div class="bottom-container">
+            <!-- Left: Monthly Forms -->
+            <div class="chart-card">
                 <div class="card-title">
                     <i class="fas fa-chart-line"></i> Monthly Forms
                 </div>
@@ -352,8 +661,8 @@
                 </div>
             </div>
 
-            <!-- Banks Distribution Chart -->
-            <div class="card chart-card">
+            <!-- Middle: Banks -->
+            <div class="chart-card">
                 <div class="card-title">
                     <i class="fas fa-chart-pie"></i> Banks
                 </div>
@@ -362,8 +671,8 @@
                 </div>
             </div>
 
-            <!-- Status Distribution Chart -->
-            <div class="card chart-card">
+            <!-- Right: Status -->
+            <div class="chart-card">
                 <div class="card-title">
                     <i class="fas fa-chart-bar"></i> Status
                 </div>
@@ -372,16 +681,86 @@
                 </div>
             </div>
         </div>
+
+        <!-- Loading Indicator -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Loading dashboard data...</p>
+        </div>
+    </div>
+
+    <!-- Region Modal -->
+    <div class="modal" id="regionModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <i class="fas fa-map"></i>
+                    <span id="modalRegionTitle">Region Details</span>
+                </div>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div id="modalContent">
+                <!-- Content will be loaded here -->
+            </div>
+        </div>
     </div>
 
     <script>
-        // Configuration - Update with your n8n webhook URL
+        // Configuration
         const N8N_DASHBOARD_WEBHOOK = 'https://noral.gleeze.com/webhook/dashbord';
+        const N8N_REGION_DATA_WEBHOOK = 'https://noral.gleeze.com/webhook/region-data';
         
         // Chart instances
         let monthlyChart = null;
         let banksChart = null;
         let statusChart = null;
+        
+        // Current modal state
+        let currentModalType = '';
+        let currentRegion = '';
+        let currentCity = '';
+
+        // Regions data structure
+        const regionsData = {
+            'NORTH': {
+                name: 'North Region',
+                totalForms: 0,
+                cities: {
+                    'ISLAMABAD': { name: 'Islamabad', totalForms: 0 },
+                    'SKARDU': { name: 'Skardu', totalForms: 0 }
+                }
+            },
+            'CENTRAL': {
+                name: 'Central Region',
+                totalForms: 0,
+                cities: {
+                    'LAHORE': { name: 'Lahore', totalForms: 0 },
+                    'SUKKUR': { name: 'Sukkur', totalForms: 0 }
+                }
+            },
+            'SOUTH': {
+                name: 'South Region',
+                totalForms: 0,
+                cities: {
+                    'KARACHI': { 
+                        name: 'Karachi', 
+                        totalForms: 0,
+                        locations: [
+                            'BAHRIA TOWN', 'BALDIA TOWN', 'CLIFTON', 'CLIFTON BLOCK 2', 'CREEK WALK',
+                            'DHA', 'EXPO CENTER', 'F.B AREA', 'GOLIMAR', 'GUL PLAZA',
+                            'GULISTAN-E-JOUHAR', 'GULSHAN-E-IQBAL', 'II CHUNDIGARH', 'JODIA BAZAR',
+                            'KEAMARI', 'KORANGI', 'LANDHI', 'LE MARKET', 'LIAQUATABAD', 'LYARI',
+                            'MACHAR COLONY', 'MALIR', 'MANGHOPIR', 'MANZOOR COLONY', 'MARIPURE',
+                            'MAYMAR', 'MEHMOODABAD', 'N.KARACHI', 'N.NAZIMABAD', 'NAZIMABAD',
+                            'ORANGI TOWN', 'PECHS', 'PIB COLONY', 'RT', 'SADDAR', 'SAFOORA',
+                            'SCHEME 33', 'SHABBIRABAD', 'SHAH FAISAL', 'SHAHRAH-E-FAISAL',
+                            'SHERSHAH', 'SITE AREA', 'SULTANABAD', 'SURJANI TOWN', 'TARIQ ROAD'
+                        ]
+                    },
+                    'HYDERABAD': { name: 'Hyderabad', totalForms: 0 }
+                }
+            }
+        };
 
         // Theme Toggle
         function toggleTheme() {
@@ -390,65 +769,249 @@
             body.classList.remove(isDark ? 'dark-theme' : 'light-theme');
             body.classList.add(isDark ? 'light-theme' : 'dark-theme');
             
-            // Update charts theme if they exist
             if (monthlyChart) monthlyChart.update();
             if (banksChart) banksChart.update();
             if (statusChart) statusChart.update();
         }
 
-        // Load Dashboard Data
-        async function loadDashboardData() {
-            const fromMonth = document.getElementById('fromMonth').value;
-            const toMonth = document.getElementById('toMonth').value;
+        // Modal Functions
+        function openModal(type, title, data) {
+            currentModalType = type;
+            document.getElementById('modalRegionTitle').textContent = title;
+            document.getElementById('modalContent').innerHTML = generateModalContent(type, data);
+            document.getElementById('regionModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('regionModal').style.display = 'none';
+            currentModalType = '';
+            currentRegion = '';
+            currentCity = '';
+        }
+
+        function generateModalContent(type, data) {
+            let html = '';
             
-            console.log('=== DEBUG: Starting loadDashboardData ===');
-            console.log('Filters:', { fromMonth, toMonth });
+            if (type === 'region') {
+                const region = regionsData[data.region];
+                html = `<div class="modal-grid" id="citiesGrid">`;
+                
+                Object.entries(region.cities).forEach(([cityCode, cityData]) => {
+                    html += `
+                        <div class="modal-item" onclick="openCityModal('${data.region}', '${cityCode}')">
+                            <div class="modal-item-name">${cityData.name}</div>
+                            <div class="modal-item-count">${cityData.totalForms}</div>
+                        </div>
+                    `;
+                });
+                
+                html += `</div>`;
+            } else if (type === 'city') {
+                const city = regionsData[data.region].cities[data.city];
+                html = `<div class="modal-grid" id="locationsGrid">`;
+                
+                if (city.locations) {
+                    city.locations.forEach(location => {
+                        html += `
+                            <div class="modal-item">
+                                <div class="modal-item-name">${location}</div>
+                                <div class="modal-item-count">0</div>
+                            </div>
+                        `;
+                    });
+                } else {
+                    html += `<p>No location data available for ${city.name}</p>`;
+                }
+                
+                html += `</div>`;
+            }
             
-            // Show loading
-            document.getElementById('loading').style.display = 'block';
+            return html;
+        }
+
+        function openRegionModal(region) {
+            currentRegion = region;
+            openModal('region', `${regionsData[region].name} - Cities`, { region: region });
+        }
+
+        function openCityModal(region, city) {
+            currentCity = city;
+            openModal('city', `${regionsData[region].cities[city].name} - Locations`, { 
+                region: region, 
+                city: city 
+            });
+        }
+
+        // Update Regions Display
+        function updateRegionsDisplay() {
+            const regionsGrid = document.getElementById('regionsGrid');
+            regionsGrid.innerHTML = '';
+            
+            Object.entries(regionsData).forEach(([regionCode, regionData]) => {
+                const regionCard = document.createElement('div');
+                regionCard.className = 'region-card';
+                regionCard.onclick = () => openRegionModal(regionCode);
+                
+                regionCard.innerHTML = `
+                    <div class="region-name">${regionData.name}</div>
+                    <div class="region-count">${regionData.totalForms}</div>
+                `;
+                
+                regionsGrid.appendChild(regionCard);
+            });
+        }
+
+        // ==============================================
+        // SEPARATE REGION DATA REFRESH
+        // ==============================================
+        async function refreshRegionData() {
+            console.log('=== REFRESHING REGION DATA ===');
+            
+            // Show loading for regions
+            document.getElementById('regionLoading').style.display = 'block';
+            const refreshBtn = document.getElementById('regionRefreshBtn');
+            refreshBtn.disabled = true;
+            refreshBtn.innerHTML = '<div class="small-spinner"></div> Loading...';
             
             try {
-                const response = await fetch(N8N_DASHBOARD_WEBHOOK, {
+                // THIS IS THE JSON SENT TO N8N FOR REGION DATA:
+                const requestData = {
+                    action: "get_region_data",
+                    fromMonth: "",  // EMPTY for lifetime data
+                    toMonth: ""     // EMPTY for lifetime data
+                };
+                
+                console.log('Sending to region webhook:', requestData);
+                
+                const response = await fetch(N8N_REGION_DATA_WEBHOOK, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({
-                        action: "get_dashboard_data",
-                        fromMonth: fromMonth,
-                        toMonth: toMonth
-                    })
+                    body: JSON.stringify(requestData)
                 });
                 
-                console.log('Response status:', response.status);
+                console.log('Region response status:', response.status);
                 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 
                 const data = await response.json();
-                console.log('=== DEBUG: Received data ===');
-                console.log('Data type:', typeof data);
-                console.log('Is array?', Array.isArray(data));
-                console.log('Full data:', data);
+                console.log('Region data received:', data);
+                
+                // Process the region data
+                if (data && data.regions) {
+                    updateRegionsWithRealData(data);
+                } else if (data && data.totalForms !== undefined) {
+                    updateRegionsWithRealData({ regions: [data] });
+                } else {
+                    console.log('No valid region data found');
+                    // Keep existing region data
+                }
+                
+            } catch (error) {
+                console.error('Error loading region data:', error);
+                alert('Failed to load region data. Check console for details.');
+            } finally {
+                document.getElementById('regionLoading').style.display = 'none';
+                refreshBtn.disabled = false;
+                refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh Regions';
+            }
+        }
+
+        // Update regions with real API data
+        function updateRegionsWithRealData(regionData) {
+            console.log('Updating regions with real data:', regionData);
+            
+            // Clear existing data
+            Object.keys(regionsData).forEach(region => {
+                regionsData[region].totalForms = 0;
+                Object.keys(regionsData[region].cities).forEach(city => {
+                    regionsData[region].cities[city].totalForms = 0;
+                });
+            });
+            
+            // Update with real data
+            if (Array.isArray(regionData.regions)) {
+                regionData.regions.forEach(region => {
+                    if (regionsData[region.region]) {
+                        regionsData[region.region].totalForms = region.totalForms || 0;
+                        
+                        if (region.cities) {
+                            region.cities.forEach(city => {
+                                if (regionsData[region.region].cities[city.city]) {
+                                    regionsData[region.region].cities[city.city].totalForms = city.totalForms || 0;
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+            
+            updateRegionsDisplay();
+        }
+
+        // ==============================================
+        // DASHBOARD DATA REFRESH (with filters)
+        // ==============================================
+        async function loadDashboardData() {
+            const fromMonth = document.getElementById('fromMonth').value;
+            const toMonth = document.getElementById('toMonth').value;
+            
+            console.log('=== REFRESHING DASHBOARD DATA ===');
+            console.log('Filters:', { fromMonth, toMonth });
+            
+            // Show loading
+            document.getElementById('loading').style.display = 'block';
+            
+            try {
+                // THIS IS THE JSON SENT TO N8N FOR DASHBOARD DATA:
+                const requestData = {
+                    action: "get_dashboard_data",
+                    fromMonth: fromMonth,
+                    toMonth: toMonth
+                };
+                
+                console.log('Sending to dashboard webhook:', requestData);
+                
+                const response = await fetch(N8N_DASHBOARD_WEBHOOK, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(requestData)
+                });
+                
+                console.log('Dashboard response status:', response.status);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                console.log('Dashboard data received:', data);
                 
                 // Hide loading
                 document.getElementById('loading').style.display = 'none';
                 
-                // FIX: Handle both array and object responses
+                // Process the data
                 if (data) {
+                    let dashboardData;
                     if (Array.isArray(data) && data.length > 0) {
-                        // If it's an array with data
-                        console.log('Processing as array with data');
-                        updateDashboard(data[0]);
+                        dashboardData = data[0];
                     } else if (data.totalForms !== undefined) {
-                        // If it's a single object (your actual response)
-                        console.log('Processing as single object');
-                        updateDashboard(data);
+                        dashboardData = data;
                     } else {
                         console.log('No valid data found');
                         resetDashboard();
+                        return;
                     }
+                    
+                    updateDashboard(dashboardData);
+                    
+                    // DO NOT update regions here - regions are separate
+                    
                 } else {
                     console.log('No data in response');
                     resetDashboard();
@@ -463,36 +1026,29 @@
 
         // Update Dashboard with Data
         function updateDashboard(dashboardData) {
-            console.log('=== DEBUG: updateDashboard called ===');
-            console.log('Dashboard data:', dashboardData);
+            console.log('Updating dashboard with:', dashboardData);
             
-            // Update only total forms
+            // Update total forms
             const totalForms = dashboardData.totalForms || 0;
-            console.log('Setting total forms to:', totalForms);
             document.getElementById('totalForms').textContent = totalForms;
             
             // Update charts
             updateCharts(dashboardData);
         }
 
-        // Reset Dashboard to Zero State
+        // Reset Dashboard
         function resetDashboard() {
-            console.log('Resetting dashboard');
             document.getElementById('totalForms').textContent = '0';
             
-            // Reset charts
             if (monthlyChart) monthlyChart.destroy();
             if (banksChart) banksChart.destroy();
             if (statusChart) statusChart.destroy();
             
-            // Create empty charts
             createEmptyCharts();
         }
 
         // Create Empty Charts
         function createEmptyCharts() {
-            console.log('Creating empty charts');
-            
             const ctx1 = document.getElementById('monthlyChart').getContext('2d');
             monthlyChart = new Chart(ctx1, {
                 type: 'bar',
@@ -512,15 +1068,11 @@
                     scales: {
                         y: {
                             beginAtZero: true,
-                            ticks: {
-                                precision: 0
-                            }
+                            ticks: { precision: 0 }
                         }
                     },
                     plugins: {
-                        legend: {
-                            display: false
-                        }
+                        legend: { display: false }
                     }
                 }
             });
@@ -543,10 +1095,8 @@
                             position: 'right',
                             labels: {
                                 boxWidth: 10,
-                                padding: 10,
-                                font: {
-                                    size: 11
-                                }
+                                padding: 8,
+                                font: { size: 10 }
                             }
                         }
                     }
@@ -571,10 +1121,8 @@
                             position: 'right',
                             labels: {
                                 boxWidth: 10,
-                                padding: 10,
-                                font: {
-                                    size: 11
-                                }
+                                padding: 8,
+                                font: { size: 10 }
                             }
                         }
                     }
@@ -584,18 +1132,11 @@
 
         // Update Charts with Data
         function updateCharts(dashboardData) {
-            console.log('=== DEBUG: updateCharts called ===');
-            console.log('Has months data?', dashboardData.months && dashboardData.months.length > 0);
-            console.log('Has banks data?', dashboardData.banks && dashboardData.banks.length > 0);
-            console.log('Has statuses data?', dashboardData.statuses && dashboardData.statuses.length > 0);
-            
             // Monthly Chart
             if (monthlyChart) monthlyChart.destroy();
             if (dashboardData.months && dashboardData.months.length > 0) {
                 const months = dashboardData.months.map(m => m.month);
                 const counts = dashboardData.months.map(m => m.count);
-                
-                console.log('Monthly chart data:', { months, counts });
                 
                 const ctx1 = document.getElementById('monthlyChart').getContext('2d');
                 monthlyChart = new Chart(ctx1, {
@@ -618,44 +1159,30 @@
                                 beginAtZero: true,
                                 ticks: {
                                     precision: 0,
-                                    font: {
-                                        size: 10
-                                    }
+                                    font: { size: 9 }
                                 }
                             },
                             x: {
                                 ticks: {
-                                    font: {
-                                        size: 10
-                                    }
+                                    font: { size: 9 }
                                 }
                             }
                         },
                         plugins: {
-                            legend: {
-                                display: false
-                            }
+                            legend: { display: false }
                         }
                     }
                 });
-                console.log('Monthly chart created successfully');
-            } else {
-                console.log('No monthly data available');
             }
             
-            // Banks Chart (Top 5)
+            // Banks Chart
             if (banksChart) banksChart.destroy();
             if (dashboardData.banks && dashboardData.banks.length > 0) {
                 const topBanks = dashboardData.banks.slice(0, 5);
                 const bankNames = topBanks.map(b => b.bank);
                 const bankCounts = topBanks.map(b => b.count);
                 
-                console.log('Banks chart data (top 5):', { bankNames, bankCounts });
-                
-                // Generate colors
-                const bankColors = [
-                    '#3498db', '#2ecc71', '#e74c3c', '#f39c12', '#9b59b6'
-                ];
+                const bankColors = ['#3498db', '#2ecc71', '#e74c3c', '#f39c12', '#9b59b6'];
                 
                 const ctx2 = document.getElementById('banksChart').getContext('2d');
                 banksChart = new Chart(ctx2, {
@@ -674,19 +1201,14 @@
                             legend: {
                                 position: 'right',
                                 labels: {
-                                    boxWidth: 10,
-                                    padding: 8,
-                                    font: {
-                                        size: 10
-                                    }
+                                    boxWidth: 8,
+                                    padding: 6,
+                                    font: { size: 9 }
                                 }
                             }
                         }
                     }
                 });
-                console.log('Banks chart created successfully');
-            } else {
-                console.log('No banks data available');
             }
             
             // Status Chart
@@ -695,9 +1217,6 @@
                 const statusNames = dashboardData.statuses.map(s => s.status);
                 const statusCounts = dashboardData.statuses.map(s => s.count);
                 
-                console.log('Status chart data:', { statusNames, statusCounts });
-                
-                // Generate colors for statuses
                 const statusColors = statusNames.map(status => {
                     if (status.includes('DEPLOYED')) return '#2ecc71';
                     if (status.includes('PENDING')) return '#f39c12';
@@ -728,48 +1247,45 @@
                             legend: {
                                 position: 'right',
                                 labels: {
-                                    boxWidth: 10,
-                                    padding: 8,
-                                    font: {
-                                        size: 10
-                                    }
+                                    boxWidth: 8,
+                                    padding: 6,
+                                    font: { size: 9 }
                                 }
                             }
                         }
                     }
                 });
-                console.log('Status chart created successfully');
-            } else {
-                console.log('No status data available');
             }
         }
 
-        // Initialize on page load
+        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             console.log('=== DASHBOARD INITIALIZING ===');
             
-            // Create empty charts initially
             createEmptyCharts();
+            updateRegionsDisplay();
             
-            // Set current month and previous month as default
+            // Set default month filters
             const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
             const now = new Date();
-            const currentMonthIndex = now.getMonth(); // 0-11
+            const currentMonthIndex = now.getMonth();
             const currentMonth = months[currentMonthIndex];
             
             document.getElementById('fromMonth').value = months[currentMonthIndex - 1] || 'JAN';
             document.getElementById('toMonth').value = currentMonth;
             
-            console.log('Default filters:', {
-                from: document.getElementById('fromMonth').value,
-                to: document.getElementById('toMonth').value
-            });
-            
-            // Load initial data
+            // Load initial dashboard data
             loadDashboardData();
             
-            // Auto-refresh every 5 minutes
+            // Auto-refresh dashboard every 5 minutes
             setInterval(loadDashboardData, 5 * 60 * 1000);
+            
+            // Close modal when clicking outside
+            document.getElementById('regionModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
         });
     </script>
 </body>
