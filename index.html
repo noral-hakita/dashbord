@@ -709,6 +709,7 @@
         // Configuration
         const N8N_DASHBOARD_WEBHOOK = 'https://noral.gleeze.com/webhook/dashbord';
         const N8N_REGION_DATA_WEBHOOK = 'https://noral.gleeze.com/webhook/region-data';
+        const N8N_LOCATION_DATA_WEBHOOK = 'https://noral.gleeze.com/webhook/location-data'; // New webhook for location data
         
         // Chart instances
         let monthlyChart = null;
@@ -719,6 +720,7 @@
         let currentModalType = '';
         let currentRegion = '';
         let currentCity = '';
+        let currentLocationData = {}; // Store location data for each city
 
         // Regions data structure
         const regionsData = {
@@ -778,8 +780,14 @@
         function openModal(type, title, data) {
             currentModalType = type;
             document.getElementById('modalRegionTitle').textContent = title;
-            document.getElementById('modalContent').innerHTML = generateModalContent(type, data);
-            document.getElementById('regionModal').style.display = 'flex';
+            
+            if (type === 'city') {
+                // For city modal, we'll load location data
+                loadLocationData(data.region, data.city);
+            } else {
+                document.getElementById('modalContent').innerHTML = generateModalContent(type, data);
+                document.getElementById('regionModal').style.display = 'flex';
+            }
         }
 
         function closeModal() {
@@ -787,6 +795,65 @@
             currentModalType = '';
             currentRegion = '';
             currentCity = '';
+        }
+
+        async function loadLocationData(region, city) {
+            // Show loading in modal
+            document.getElementById('modalContent').innerHTML = `
+                <div style="text-align: center; padding: 20px;">
+                    <div class="small-spinner"></div>
+                    <p>Loading location data...</p>
+                </div>
+            `;
+            document.getElementById('regionModal').style.display = 'flex';
+            
+            try {
+                // Fetch location data from webhook
+                const requestData = {
+                    action: "get_location_data",
+                    region: region,
+                    city: city,
+                    fromMonth: "",
+                    toMonth: ""
+                };
+                
+                console.log('Loading location data for:', { region, city });
+                
+                const response = await fetch(N8N_LOCATION_DATA_WEBHOOK, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(requestData)
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                console.log('Location data received:', data);
+                
+                // Store location data
+                const cityKey = `${region}_${city}`;
+                currentLocationData[cityKey] = data.locations || {};
+                
+                // Generate modal content with real location data
+                document.getElementById('modalContent').innerHTML = generateModalContent('city', { 
+                    region: region, 
+                    city: city,
+                    locations: data.locations || {}
+                });
+                
+            } catch (error) {
+                console.error('Error loading location data:', error);
+                // Fallback to showing locations with 0
+                document.getElementById('modalContent').innerHTML = generateModalContent('city', { 
+                    region: region, 
+                    city: city,
+                    locations: {}
+                });
+            }
         }
 
         function generateModalContent(type, data) {
@@ -808,14 +875,18 @@
                 html += `</div>`;
             } else if (type === 'city') {
                 const city = regionsData[data.region].cities[data.city];
+                const cityKey = `${data.region}_${data.city}`;
+                const locationStats = data.locations || currentLocationData[cityKey] || {};
+                
                 html = `<div class="modal-grid" id="locationsGrid">`;
                 
                 if (city.locations) {
                     city.locations.forEach(location => {
+                        const count = locationStats[location] || 0;
                         html += `
                             <div class="modal-item">
                                 <div class="modal-item-name">${location}</div>
-                                <div class="modal-item-count">0</div>
+                                <div class="modal-item-count">${count}</div>
                             </div>
                         `;
                     });
@@ -872,6 +943,9 @@
             const refreshBtn = document.getElementById('regionRefreshBtn');
             refreshBtn.disabled = true;
             refreshBtn.innerHTML = '<div class="small-spinner"></div> Loading...';
+            
+            // Clear cached location data when refreshing regions
+            currentLocationData = {};
             
             try {
                 // THIS IS THE JSON SENT TO N8N FOR REGION DATA:
