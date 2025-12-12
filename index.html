@@ -841,8 +841,8 @@ async function refreshEmployeeData() {
     try {
         const response = await fetchEmployeeData(N8N_EMPLOYEE_DATA_WEBHOOK, { 
             action: "get_employee_data",
-            fromMonth: document.getElementById('fromMonth').value,
-            toMonth: document.getElementById('toMonth').value
+            fromMonth: "",
+            toMonth: ""
         });
         
         if (response.success) {
@@ -936,8 +936,8 @@ async function openEmployeeCityModal(regionCode, cityCode, event) {
                 action: 'get_employee_list',
                 region: regionCode,
                 city: cityCode,
-                fromMonth: document.getElementById('fromMonth').value,
-                toMonth: document.getElementById('toMonth').value
+                fromMonth: "",
+                toMonth: ""
             });
             if (response.success) {
                 employeeList = response.employees || response.data || [];
@@ -1002,8 +1002,8 @@ async function openEmployeeDashboardModal(employeeId, employeeName, event) {
         const response = await fetchEmployeeData(N8N_EMPLOYEE_DETAIL_WEBHOOK, {
             action: 'get_employee_forms_graph',
             employeeId: employeeId,
-            fromMonth: document.getElementById('fromMonth').value,
-            toMonth: document.getElementById('toMonth').value
+            fromMonth: "",
+            toMonth: ""
         });
 
         if (!response.success) throw new Error('Failed to load employee detail from webhook');
