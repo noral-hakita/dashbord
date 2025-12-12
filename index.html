@@ -25,7 +25,6 @@
             --body-bg: #f8f9fa;
             --text: #333333;
         }
-
         body.dark-theme {
             --primary: #3b8bba;
             --secondary: #34495e;
@@ -35,15 +34,14 @@
             --card-bg: #2c3e50;
             --text: #ecf0f1;
             --border: #34495e;
+            --gray: #bdc3c7;
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
         body {
             background-color: var(--body-bg);
             color: var(--text);
@@ -51,7 +49,6 @@
             padding: 15px;
             min-height: 100vh;
         }
-
         .container {
             max-width: 1800px;
             margin: 0 auto;
@@ -60,8 +57,6 @@
             grid-template-rows: auto auto auto auto;
             gap: 15px;
         }
-
-        /* Top Header - spans full width */
         .header {
             grid-column: 1 / -1;
             display: flex;
@@ -73,7 +68,6 @@
             box-shadow: var(--shadow);
             margin-bottom: 15px;
         }
-
         .logo {
             font-size: 24px;
             font-weight: bold;
@@ -82,8 +76,6 @@
             align-items: center;
             gap: 10px;
         }
-
-        /* Top Container - Dashboard Controls */
         .top-container {
             grid-column: 1 / -1;
             display: grid;
@@ -91,8 +83,6 @@
             gap: 15px;
             margin-bottom: 15px;
         }
-
-        /* Dashboard Controls (Left side of top) - Now Employee Status */
         .dashboard-controls {
             background: var(--card-bg);
             border-radius: 8px;
@@ -101,7 +91,6 @@
             display: flex;
             flex-direction: column;
         }
-
         .dashboard-title {
             font-size: 20px;
             font-weight: bold;
@@ -111,12 +100,7 @@
             align-items: center;
             gap: 10px;
         }
-
-        .theme-toggle {
-            margin-top: auto;
-        }
-        
-        /* Employee Status Styles */
+        .theme-toggle { margin-top: auto; }
         .employee-status-header {
             display: flex;
             justify-content: space-between;
@@ -156,7 +140,7 @@
         .employee-region-name {
             font-size: 14px;
             font-weight: 600;
-            color: var(--secondary);
+            color: var(--text);
             margin-bottom: 5px;
         }
         .employee-region-count {
@@ -172,8 +156,6 @@
             color: var(--gray);
             margin-top: 5px;
         }
-
-        /* Employee List Table */
         .employee-list-container {
             width: 100%;
             overflow-x: auto;
@@ -211,8 +193,6 @@
         .status-active { background-color: var(--success); }
         .status-inactive { background-color: var(--danger); }
         .status-onleave { background-color: var(--warning); }
-
-        /* Employee Dashboard Panel */
         .employee-dashboard-panel {
             padding: 15px;
             border: 1px solid var(--border);
@@ -236,14 +216,11 @@
             font-weight: 500;
             color: var(--text);
         }
-
         .employee-forms-graph-container {
             height: 250px;
             margin-top: 15px;
             position: relative;
         }
-
-        /* Regions Container (Right side of top) */
         .regions-container {
             background: var(--card-bg);
             border-radius: 8px;
@@ -252,14 +229,12 @@
             display: flex;
             flex-direction: column;
         }
-
         .regions-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 10px;
         }
-
         .regions-title {
             font-size: 16px;
             font-weight: 600;
@@ -268,13 +243,11 @@
             align-items: center;
             gap: 8px;
         }
-
         .regions-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
         }
-
         .region-card {
             background: rgba(52, 152, 219, 0.1);
             border: 2px solid var(--primary);
@@ -288,26 +261,21 @@
             align-items: center;
             justify-content: center;
         }
-
         .region-card:hover {
             background: rgba(52, 152, 219, 0.2);
             transform: translateY(-2px);
         }
-
         .region-name {
             font-size: 14px;
             font-weight: 600;
-            color: var(--secondary);
+            color: var(--text);
             margin-bottom: 5px;
         }
-
         .region-count {
             font-size: 24px;
             font-weight: bold;
             color: var(--primary);
         }
-
-        /* Middle Row - Filters and Total Forms */
         .middle-container {
             grid-column: 1 / -1;
             display: grid;
@@ -315,33 +283,25 @@
             gap: 15px;
             margin-bottom: 15px;
         }
-
-        /* Filters Container (Left side of middle) */
         .filters-card {
             background: var(--card-bg);
             border-radius: 8px;
             padding: 15px;
             box-shadow: var(--shadow);
         }
-
         .filter-row {
             display: flex;
             align-items: center;
             gap: 10px;
             margin-bottom: 15px;
         }
-
-        .filter-group {
-            flex: 1;
-        }
-
+        .filter-group { flex: 1; }
         .filter-label {
             font-size: 12px;
             color: var(--text);
             margin-bottom: 5px;
             display: block;
         }
-
         select {
             padding: 8px 10px;
             border: 1px solid var(--border);
@@ -351,14 +311,11 @@
             font-size: 12px;
             width: 100%;
         }
-
         select:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
         }
-
-        /* Total Forms Container (Right side of middle) */
         .total-forms-card {
             background: var(--card-bg);
             border-radius: 8px;
@@ -370,7 +327,6 @@
             justify-content: center;
             align-items: center;
         }
-
         .total-number {
             font-size: 36px;
             font-weight: bold;
@@ -378,22 +334,18 @@
             margin: 10px 0;
             line-height: 1;
         }
-
         .total-label {
             font-size: 14px;
             color: var(--gray);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-
-        /* Bottom Container - Charts */
         .bottom-container {
             grid-column: 1 / -1;
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
             gap: 15px;
         }
-
         .chart-card {
             background: var(--card-bg);
             border-radius: 8px;
@@ -402,7 +354,6 @@
             display: flex;
             flex-direction: column;
         }
-
         .card-title {
             font-size: 14px;
             font-weight: 600;
@@ -412,14 +363,11 @@
             align-items: center;
             gap: 8px;
         }
-
         .chart-container {
             height: 200px;
             position: relative;
             flex-grow: 1;
         }
-
-        /* Buttons */
         .btn {
             padding: 8px 12px;
             border: none;
@@ -434,16 +382,11 @@
             width: 100%;
             justify-content: center;
         }
-
         .btn-primary {
             background-color: var(--primary);
             color: white;
         }
-
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
-        }
-
+        .btn-primary:hover { background-color: var(--primary-dark); }
         .btn-success {
             background-color: var(--success);
             color: white;
@@ -452,21 +395,12 @@
             width: auto;
             margin-top: 5px;
         }
-
-        .btn-success:hover {
-            background-color: #27ae60;
-        }
-
+        .btn-success:hover { background-color: #27ae60; }
         .btn-secondary {
             background-color: var(--secondary);
             color: white;
         }
-
-        .btn-secondary:hover {
-            background-color: #1a252f;
-        }
-
-        /* Modal Styles */
+        .btn-secondary:hover { background-color: #1a252f; }
         .modal {
             display: none;
             position: fixed;
@@ -479,7 +413,6 @@
             justify-content: center;
             align-items: center;
         }
-
         .modal-content {
             background: var(--card-bg);
             border-radius: 12px;
@@ -490,7 +423,6 @@
             overflow-y: auto;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-
         .modal-header {
             display: flex;
             justify-content: space-between;
@@ -499,7 +431,6 @@
             padding-bottom: 10px;
             border-bottom: 2px solid var(--border);
         }
-
         .modal-title {
             font-size: 18px;
             font-weight: 600;
@@ -508,7 +439,6 @@
             align-items: center;
             gap: 8px;
         }
-
         .close-btn {
             background: none;
             border: none;
@@ -517,18 +447,13 @@
             cursor: pointer;
             transition: color 0.3s;
         }
-
-        .close-btn:hover {
-            color: var(--danger);
-        }
-
+        .close-btn:hover { color: var(--danger); }
         .modal-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             gap: 10px;
             margin-top: 15px;
         }
-
         .modal-item {
             background: rgba(52, 152, 219, 0.1);
             border: 1px solid var(--border);
@@ -542,32 +467,27 @@
             justify-content: center;
             text-align: center;
         }
-
         .modal-item:hover {
             background: rgba(52, 152, 219, 0.2);
             transform: translateY(-2px);
         }
-
         .modal-item-name {
             font-size: 12px;
             font-weight: 500;
             color: var(--text);
             margin-bottom: 5px;
         }
-
         .modal-item-count {
             font-size: 16px;
             font-weight: bold;
             color: var(--primary);
         }
-
         .loading {
             display: none;
             text-align: center;
             padding: 20px;
             grid-column: 1 / -1;
         }
-
         .region-loading {
             display: none;
             text-align: center;
@@ -576,7 +496,6 @@
             color: var(--gray);
             margin-top: 5px;
         }
-
         .spinner {
             border: 3px solid var(--light);
             border-top: 3px solid var(--primary);
@@ -586,7 +505,6 @@
             animation: spin 1s linear infinite;
             margin: 0 auto 10px;
         }
-
         .small-spinner {
             border: 2px solid var(--light);
             border-top: 2px solid var(--success);
@@ -597,88 +515,40 @@
             display: inline-block;
             margin-right: 5px;
         }
-
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-
-        /* Responsive Design */
         @media (max-width: 1200px) {
             .container {
                 grid-template-columns: 1fr;
                 grid-template-rows: auto auto auto auto auto auto;
             }
-            
-            .top-container {
+            .top-container, .middle-container, .bottom-container {
                 grid-column: 1;
                 grid-template-columns: 1fr;
             }
-            
-            .middle-container {
-                grid-column: 1;
-                grid-template-columns: 1fr;
-            }
-            
-            .bottom-container {
-                grid-column: 1;
-                grid-template-columns: 1fr;
-            }
-            
             .regions-grid, .employee-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
-
         @media (max-width: 768px) {
-            .regions-grid, .employee-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .header {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .filter-row {
-                flex-direction: column;
-            }
-            
-            .modal-grid {
-                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            }
-            
-            .bottom-container {
-                grid-template-columns: 1fr;
-            }
+            .regions-grid, .employee-grid { grid-template-columns: 1fr; }
+            .header { flex-direction: column; gap: 10px; }
+            .filter-row { flex-direction: column; }
+            .modal-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+            .bottom-container { grid-template-columns: 1fr; }
         }
-
         @media (max-width: 480px) {
-            .container {
-                padding: 10px;
-                gap: 10px;
-            }
-            
-            .header, .card {
-                padding: 12px;
-            }
-            
-            .total-number {
-                font-size: 28px;
-            }
-            
-            .chart-container {
-                height: 180px;
-            }
-            
-            .modal-content {
-                width: 95%;
-                padding: 15px;
-            }
+            .container { padding: 10px; gap: 10px; }
+            .header, .card { padding: 12px; }
+            .total-number { font-size: 28px; }
+            .chart-container { height: 180px; }
+            .modal-content { width: 95%; padding: 15px; }
         }
     </style>
 </head>
-<body class="light-theme">
+<body>
     <div class="container">
         <div class="header">
             <div class="logo">
@@ -687,13 +557,12 @@
             </div>
             <div class="theme-toggle">
                 <button class="btn btn-secondary" onclick="toggleTheme()">
-                <i class="fas fa-moon"></i> Toggle Theme
+                    <i class="fas fa-moon"></i> Toggle Theme
                 </button>
-             </div>
+            </div>
         </div>
 
         <div class="top-container">
-            <!-- Employee Status Section (Replacing Dashboard Controls) -->
             <div class="dashboard-controls" id="employeeStatusContainer">
                 <div class="employee-status-header">
                     <div class="dashboard-title">
@@ -704,13 +573,10 @@
                         <i class="fas fa-sync-alt"></i> Refresh Employees
                     </button>
                 </div>
-                
                 <div class="employee-loading" id="employeeLoading">
                     <div class="small-spinner"></div> Loading Employee Data...
                 </div>
-                <div class="employee-grid" id="employeeRegionsGrid">
-                    <!-- Employee regions will be loaded here -->
-                </div>
+                <div class="employee-grid" id="employeeRegionsGrid"></div>
             </div>
 
             <div class="regions-container">
@@ -725,9 +591,7 @@
                 <div class="region-loading" id="regionLoading">
                     <div class="small-spinner"></div> Loading...
                 </div>
-                <div class="regions-grid" id="regionsGrid">
-                    <!-- Regions will be loaded here -->
-                </div>
+                <div class="regions-grid" id="regionsGrid"></div>
             </div>
         </div>
 
@@ -737,36 +601,20 @@
                     <div class="filter-group">
                         <label class="filter-label">From Month:</label>
                         <select id="fromMonth">
-                            <option value="">All</option>
-                            <option value="JAN">JAN</option>
-                            <option value="FEB">FEB</option>
-                            <option value="MAR">MAR</option>
-                            <option value="APR">APR</option>
-                            <option value="MAY">MAY</option>
-                            <option value="JUN">JUN</option>
-                            <option value="JUL">JUL</option>
-                            <option value="AUG">AUG</option>
-                            <option value="SEP">SEP</option>
-                            <option value="OCT">OCT</option>
-                            <option value="NOV">NOV</option>
+                            <option value="">All</option><option value="JAN">JAN</option><option value="FEB">FEB</option>
+                            <option value="MAR">MAR</option><option value="APR">APR</option><option value="MAY">MAY</option>
+                            <option value="JUN">JUN</option><option value="JUL">JUL</option><option value="AUG">AUG</option>
+                            <option value="SEP">SEP</option><option value="OCT">OCT</option><option value="NOV">NOV</option>
                             <option value="DEC">DEC</option>
                         </select>
                     </div>
                     <div class="filter-group">
                         <label class="filter-label">To Month:</label>
                         <select id="toMonth">
-                            <option value="">All</option>
-                            <option value="JAN">JAN</option>
-                            <option value="FEB">FEB</option>
-                            <option value="MAR">MAR</option>
-                            <option value="APR">APR</option>
-                            <option value="MAY">MAY</option>
-                            <option value="JUN">JUN</option>
-                            <option value="JUL">JUL</option>
-                            <option value="AUG">AUG</option>
-                            <option value="SEP">SEP</option>
-                            <option value="OCT">OCT</option>
-                            <option value="NOV">NOV</option>
+                            <option value="">All</option><option value="JAN">JAN</option><option value="FEB">FEB</option>
+                            <option value="MAR">MAR</option><option value="APR">APR</option><option value="MAY">MAY</option>
+                            <option value="JUN">JUN</option><option value="JUL">JUL</option><option value="AUG">AUG</option>
+                            <option value="SEP">SEP</option><option value="OCT">OCT</option><option value="NOV">NOV</option>
                             <option value="DEC">DEC</option>
                         </select>
                     </div>
@@ -784,30 +632,16 @@
 
         <div class="bottom-container">
             <div class="chart-card">
-                <div class="card-title">
-                    <i class="fas fa-chart-line"></i> Monthly Forms
-                </div>
-                <div class="chart-container">
-                    <canvas id="monthlyChart"></canvas>
-                </div>
+                <div class="card-title"><i class="fas fa-chart-line"></i> Monthly Forms</div>
+                <div class="chart-container"><canvas id="monthlyChart"></canvas></div>
             </div>
-
             <div class="chart-card">
-                <div class="card-title">
-                    <i class="fas fa-chart-pie"></i> Banks
-                </div>
-                <div class="chart-container">
-                    <canvas id="banksChart"></canvas>
-                </div>
+                <div class="card-title"><i class="fas fa-chart-pie"></i> Banks</div>
+                <div class="chart-container"><canvas id="banksChart"></canvas></div>
             </div>
-
             <div class="chart-card">
-                <div class="card-title">
-                    <i class="fas fa-chart-bar"></i> Status
-                </div>
-                <div class="chart-container">
-                    <canvas id="statusChart"></canvas>
-                </div>
+                <div class="card-title"><i class="fas fa-chart-bar"></i> Status</div>
+                <div class="chart-container"><canvas id="statusChart"></canvas></div>
             </div>
         </div>
 
@@ -817,7 +651,6 @@
         </div>
     </div>
 
-    <!-- Region Modal (from second HTML) -->
     <div class="modal" id="regionModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -827,13 +660,10 @@
                 </div>
                 <button class="close-btn" onclick="closeModal()">&times;</button>
             </div>
-            <div id="modalContent">
-                <!-- Content will be loaded here -->
-            </div>
+            <div id="modalContent"></div>
         </div>
     </div>
 
-    <!-- Generic Modal for Employee Status (from first HTML) -->
     <div class="modal" id="genericModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -843,1045 +673,912 @@
                 </div>
                 <button class="close-btn" onclick="closeGenericModal()">&times;</button>
             </div>
-            <div id="modalBody">
-                <!-- Modal content will be loaded here -->
-            </div>
+            <div id="modalBody"></div>
         </div>
     </div>
 
-    <script>
-        // ==============================================
-        // CONFIGURATION FROM SECOND HTML (UNCHANGED)
-        // ==============================================
-        const N8N_DASHBOARD_WEBHOOK = 'https://noral.gleeze.com/webhook/dashbord';
-        const N8N_REGION_DATA_WEBHOOK = 'https://noral.gleeze.com/webhook/region-data';
-        const N8N_LOCATION_DATA_WEBHOOK = 'https://noral.gleeze.com/webhook/location-data';
-        
-        // Chart instances
-        let monthlyChart = null;
-        let banksChart = null;
-        let statusChart = null;
-        
-        // Current modal state
-        let currentModalType = '';
-        let currentRegion = '';
-        let currentCity = '';
-        let currentLocationData = {};
+<script>
+// ==============================================
+// CONFIGURATION - ALL WEBHOOK URLS
+// ==============================================
+const N8N_DASHBOARD_WEBHOOK = 'https://noral.gleeze.com/webhook/dashbord';
+const N8N_REGION_DATA_WEBHOOK = 'https://noral.gleeze.com/webhook/region-data';
+const N8N_LOCATION_DATA_WEBHOOK = 'https://noral.gleeze.com/webhook/location-data';
+const N8N_EMPLOYEE_DATA_WEBHOOK = 'https://noral.gleeze.com/webhook/employee-data';
+const N8N_EMPLOYEE_DETAIL_WEBHOOK = 'https://noral.gleeze.com/webhook/employee-detail';
 
-        // Regions data structure
-        const regionsData = {
-            'NORTH': {
-                name: 'North Region',
-                totalForms: 0,
-                cities: {
-                    'ISLAMABAD': { name: 'Islamabad', totalForms: 0 },
-                    'SKARDU': { name: 'Skardu', totalForms: 0 }
-                }
+// ==============================================
+// GLOBAL VARIABLES
+// ==============================================
+let monthlyChart = null, banksChart = null, statusChart = null, employeeFormsChart = null;
+let currentModalType = '', currentRegion = '', currentCity = '', currentLocationData = {};
+let employeeRegionsData = {}, employeeListCache = {};
+let regionRefreshInterval = null, employeeRefreshInterval = null, dashboardRefreshInterval = null;
+
+// ==============================================
+// DATA STRUCTURES
+// ==============================================
+const regionsData = {
+    'NORTH': {
+        name: 'North Region', totalForms: 0,
+        cities: { 'ISLAMABAD': { name: 'Islamabad', totalForms: 0 }, 'SKARDU': { name: 'Skardu', totalForms: 0 } }
+    },
+    'CENTRAL': {
+        name: 'Central Region', totalForms: 0,
+        cities: { 'LAHORE': { name: 'Lahore', totalForms: 0 }, 'SUKKAR': { name: 'Sukkar', totalForms: 0 } }
+    },
+    'SOUTH': {
+        name: 'South Region', totalForms: 0,
+        cities: {
+            'KARACHI': { 
+                name: 'Karachi', totalForms: 0,
+                locations: [
+                    'BAHRIA TOWN', 'BALDIA TOWN', 'CLIFTON', 'CLIFTON BLOCK 2', 'CREEK WALK',
+                    'DHA', 'EXPO CENTER', 'F.B AREA', 'GOLIMAR', 'GUL PLAZA',
+                    'GULISTAN-E-JOUHAR', 'GULSHAN-E-IQBAL', 'II CHUNDIGARH', 'JODIA BAZAR',
+                    'KEAMARI', 'KORANGI', 'LANDHI', 'LE MARKET', 'LIAQUATABAD', 'LYARI',
+                    'MACHAR COLONY', 'MALIR', 'MANGHOPIR', 'MANZOOR COLONY', 'MARIPURE',
+                    'MAYMAR', 'MEHMOODABAD', 'N.KARACHI', 'N.NAZIMABAD', 'NAZIMABAD',
+                    'ORANGI TOWN', 'PECHS', 'PIB COLONY', 'RT', 'SADDAR', 'SAFOORA',
+                    'SCHEME 33', 'SHABBIRABAD', 'SHAH FAISAL', 'SHAHRAH-E-FAISAL',
+                    'SHERSHAH', 'SITE AREA', 'SULTANABAD', 'SURJANI TOWN', 'TARIQ ROAD'
+                ]
             },
-            'CENTRAL': {
-                name: 'Central Region',
-                totalForms: 0,
-                cities: {
-                    'LAHORE': { name: 'Lahore', totalForms: 0 },
-                    'SUKKAR': { name: 'Sukkar', totalForms: 0 }
-                }
-            },
-            'SOUTH': {
-                name: 'South Region',
-                totalForms: 0,
-                cities: {
-                    'KARACHI': { 
-                        name: 'Karachi', 
-                        totalForms: 0,
-                        locations: [
-                            'BAHRIA TOWN', 'BALDIA TOWN', 'CLIFTON', 'CLIFTON BLOCK 2', 'CREEK WALK',
-                            'DHA', 'EXPO CENTER', 'F.B AREA', 'GOLIMAR', 'GUL PLAZA',
-                            'GULISTAN-E-JOUHAR', 'GULSHAN-E-IQBAL', 'II CHUNDIGARH', 'JODIA BAZAR',
-                            'KEAMARI', 'KORANGI', 'LANDHI', 'LE MARKET', 'LIAQUATABAD', 'LYARI',
-                            'MACHAR COLONY', 'MALIR', 'MANGHOPIR', 'MANZOOR COLONY', 'MARIPURE',
-                            'MAYMAR', 'MEHMOODABAD', 'N.KARACHI', 'N.NAZIMABAD', 'NAZIMABAD',
-                            'ORANGI TOWN', 'PECHS', 'PIB COLONY', 'RT', 'SADDAR', 'SAFOORA',
-                            'SCHEME 33', 'SHABBIRABAD', 'SHAH FAISAL', 'SHAHRAH-E-FAISAL',
-                            'SHERSHAH', 'SITE AREA', 'SULTANABAD', 'SURJANI TOWN', 'TARIQ ROAD'
-                        ]
-                    },
-                    'HYDERABAD': { name: 'Hyderabad', totalForms: 0 }
-                }
-            }
-        };
-
-        // ==============================================
-        // EMPLOYEE STATUS CONFIGURATION (FROM FIRST HTML)
-        // ==============================================
-        const N8N_EMPLOYEE_DATA_WEBHOOK = 'https://noral.gleeze.com/webhook/employee-data';
-        const N8N_EMPLOYEE_DETAIL_WEBHOOK = 'https://noral.gleeze.com/webhook/employee-detail';
-        
-        // Chart instances for employee dashboard
-        let employeeFormsChart = null;
-        
-        // Data storage for employees
-        let employeeRegionsData = {};
-        let employeeListCache = {};
-
-        // Mock data for demonstration (from first HTML)
-        const mockEmployeeData = {
-            'NORTH': { 
-                name: 'North Region', 
-                count: 45, 
-                cities: {
-                    'ISLAMABAD': { name: 'Islamabad', count: 20 },
-                    'SKARDU': { name: 'Skardu', count: 25 }
-                }
-            },
-            'CENTRAL': { 
-                name: 'Central Region', 
-                count: 60,
-                cities: {
-                    'LAHORE': { name: 'Lahore', count: 40 },
-                    'SUKKAR': { name: 'Sukkar', count: 20 }
-                }
-            },
-            'SOUTH': { 
-                name: 'South Region', 
-                count: 80,
-                cities: {
-                    'KARACHI': { name: 'Karachi', count: 70 },
-                    'HYDERABAD': { name: 'Hyderabad', count: 10 }
-                }
-            }
-        };
-
-        // Mock employee list data
-        const mockEmployeeList = [
-            { id: 'emp001', name: 'Ali Khan', contact: '0300-1234567', status: 'Active', forms: 150, region: 'NORTH', city: 'ISLAMABAD', joined: '2023-08-15' },
-            { id: 'emp002', name: 'Sara Ahmed', contact: '0321-9876543', status: 'On Leave', forms: 80, region: 'NORTH', city: 'ISLAMABAD', joined: '2024-01-20' },
-            { id: 'emp003', name: 'Raza Mehmood', contact: '0333-5551212', status: 'Active', forms: 210, region: 'NORTH', city: 'ISLAMABAD', joined: '2023-05-01' },
-            { id: 'emp004', name: 'Fatima Zafar', contact: '0345-6667788', status: 'Inactive', forms: 40, region: 'SOUTH', city: 'KARACHI', joined: '2024-03-10' },
-            { id: 'emp005', name: 'Zain Iqbal', contact: '0312-1112233', status: 'Active', forms: 300, region: 'SOUTH', city: 'KARACHI', joined: '2022-11-25' },
-            { id: 'emp006', name: 'Ahmed Raza', contact: '0333-4445555', status: 'Active', forms: 180, region: 'CENTRAL', city: 'LAHORE', joined: '2023-09-10' },
-            { id: 'emp007', name: 'Maria Khan', contact: '0345-7778888', status: 'Active', forms: 95, region: 'CENTRAL', city: 'LAHORE', joined: '2024-02-15' },
-            { id: 'emp008', name: 'Bilal Ahmed', contact: '0301-2223333', status: 'Active', forms: 120, region: 'CENTRAL', city: 'SUKKAR', joined: '2023-11-01' },
-            { id: 'emp009', name: 'Sanaullah', contact: '0332-9990000', status: 'Inactive', forms: 60, region: 'SOUTH', city: 'HYDERABAD', joined: '2024-04-05' },
-            { id: 'emp010', name: 'Usman Ali', contact: '0315-8889999', status: 'Active', forms: 250, region: 'SOUTH', city: 'KARACHI', joined: '2022-07-20' }
-        ];
-
-        // Mock employee graph data
-        const mockEmployeeGraph = {
-            'emp001': {
-                labels: ['Aug 2023', 'Sep 2023', 'Oct 2023', 'Nov 2023', 'Dec 2023', 'Jan 2024', 'Feb 2024', 'Mar 2024', 'Apr 2024', 'May 2024', 'Jun 2024', 'Jul 2024', 'Aug 2024', 'Sep 2024', 'Oct 2024', 'Nov 2024', 'Dec 2024', 'Jan 2025', 'Feb 2025', 'Mar 2025', 'Apr 2025', 'May 2025', 'Jun 2025', 'Jul 2025', 'Aug 2025', 'Sep 2025', 'Oct 2025', 'Nov 2025', 'Dec 2025'],
-                forms: [20, 35, 40, 50, 45, 60, 55, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160, 165, 170]
-            },
-            'emp002': {
-                labels: ['Jan 2024', 'Feb 2024', 'Mar 2024', 'Apr 2024', 'May 2024', 'Jun 2024', 'Jul 2024', 'Aug 2024', 'Sep 2024', 'Oct 2024', 'Nov 2024', 'Dec 2024', 'Jan 2025', 'Feb 2025', 'Mar 2025', 'Apr 2025', 'May 2025', 'Jun 2025', 'Jul 2025', 'Aug 2025', 'Sep 2025', 'Oct 2025', 'Nov 2025', 'Dec 2025'],
-                forms: [10, 15, 20, 25, 30, 0, 0, 0, 0, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80]
-            },
-            'emp003': {
-                labels: ['May 2023', 'Jun 2023', 'Jul 2023', 'Aug 2023', 'Sep 2023', 'Oct 2023', 'Nov 2023', 'Dec 2023', 'Jan 2024', 'Feb 2024', 'Mar 2024', 'Apr 2024', 'May 2024', 'Jun 2024', 'Jul 2024', 'Aug 2024', 'Sep 2024', 'Oct 2024', 'Nov 2024', 'Dec 2024', 'Jan 2025', 'Feb 2025', 'Mar 2025', 'Apr 2025', 'May 2025', 'Jun 2025', 'Jul 2025', 'Aug 2025', 'Sep 2025', 'Oct 2025', 'Nov 2025', 'Dec 2025'],
-                forms: [15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160, 165, 210]
-            }
-        };
-
-        // ==============================================
-        // EMPLOYEE STATUS FUNCTIONS (FROM FIRST HTML)
-        // ==============================================
-
-        // Simulate webhook calls for employees
-        async function fetchEmployeeData(url, data) {
-            console.log('Fetching from simulated employee webhook:', url, data);
-            await new Promise(resolve => setTimeout(resolve, 500));
-
-            if (url === N8N_EMPLOYEE_DATA_WEBHOOK) {
-                return { success: true, employeeData: mockEmployeeData };
-            } else if (url === N8N_EMPLOYEE_DETAIL_WEBHOOK && data.action === 'get_employee_list') {
-                const cityList = mockEmployeeList.filter(e => e.region === data.region && e.city === data.city);
-                employeeListCache[`${data.region}_${data.city}`] = cityList;
-                return { success: true, employees: cityList };
-            } else if (url === N8N_EMPLOYEE_DETAIL_WEBHOOK && data.action === 'get_employee_forms_graph') {
-                const employeeDetail = mockEmployeeList.find(e => e.id === data.employeeId) || {};
-                const graphData = mockEmployeeGraph[data.employeeId] || { 
-                    labels: ['Jan 2025', 'Feb 2025', 'Mar 2025', 'Apr 2025', 'May 2025', 'Jun 2025', 'Jul 2025', 'Aug 2025', 'Sep 2025', 'Oct 2025', 'Nov 2025', 'Dec 2025'],
-                    forms: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-                };
-                return { success: true, detail: employeeDetail, graph: graphData };
-            }
-            return { success: false, error: 'Unknown action' };
+            'HYDERABAD': { name: 'Hyderabad', totalForms: 0 }
         }
+    }
+};
 
-        // Refresh employee data
-        async function refreshEmployeeData() {
-            console.log('=== REFRESHING EMPLOYEE DATA ===');
-            
-            document.getElementById('employeeLoading').style.display = 'block';
-            const refreshBtn = document.getElementById('employeeRefreshBtn');
-            refreshBtn.disabled = true;
-            refreshBtn.innerHTML = '<div class="small-spinner"></div> Loading...';
-            
-            try {
-                const response = await fetchEmployeeData(N8N_EMPLOYEE_DATA_WEBHOOK, { action: "get_employee_data" });
-                
-                if (response.success) {
-                    employeeRegionsData = response.employeeData;
-                    updateEmployeeRegionsDisplay();
-                } else {
-                    console.error('Failed to load employee data:', response.error);
-                    alert('Failed to load employee data. Check console for details.');
-                }
-            } catch (error) {
-                console.error('Error fetching employee data:', error);
-                alert('Error loading employee data. Please try again.');
-            } finally {
-                document.getElementById('employeeLoading').style.display = 'none';
-                refreshBtn.disabled = false;
-                refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh Employees';
-            }
-        }
+const mockEmployeeData = {
+    'NORTH': { name: 'North Region', count: 45, cities: { 'ISLAMABAD': { name: 'Islamabad', count: 20 }, 'SKARDU': { name: 'Skardu', count: 25 } } },
+    'CENTRAL': { name: 'Central Region', count: 60, cities: { 'LAHORE': { name: 'Lahore', count: 40 }, 'SUKKAR': { name: 'Sukkar', count: 20 } } },
+    'SOUTH': { name: 'South Region', count: 80, cities: { 'KARACHI': { name: 'Karachi', count: 70 }, 'HYDERABAD': { name: 'Hyderabad', count: 10 } } }
+};
 
-        // Update employee regions display
-        function updateEmployeeRegionsDisplay() {
-            const grid = document.getElementById('employeeRegionsGrid');
-            grid.innerHTML = '';
-            
-            Object.entries(employeeRegionsData).forEach(([regionCode, regionData]) => {
-                const card = document.createElement('div');
-                card.className = 'employee-region-card';
-                card.onclick = () => openEmployeeRegionModal(regionCode);
-                
-                card.innerHTML = `
-                    <div class="employee-region-name">${regionData.name}</div>
-                    <div class="employee-region-count">${regionData.count}</div>
-                `;
-                
-                grid.appendChild(card);
-            });
-        }
+const mockEmployeeList = [
+    { id: 'emp001', name: 'Ali Khan', contact: '0300-1234567', status: 'Active', forms: 150, region: 'NORTH', city: 'ISLAMABAD', joined: '2023-08-15' },
+    { id: 'emp002', name: 'Sara Ahmed', contact: '0321-9876543', status: 'On Leave', forms: 80, region: 'NORTH', city: 'ISLAMABAD', joined: '2024-01-20' },
+    { id: 'emp003', name: 'Raza Mehmood', contact: '0333-5551212', status: 'Active', forms: 210, region: 'NORTH', city: 'ISLAMABAD', joined: '2023-05-01' },
+    { id: 'emp004', name: 'Fatima Zafar', contact: '0345-6667788', status: 'Inactive', forms: 40, region: 'SOUTH', city: 'KARACHI', joined: '2024-03-10' },
+    { id: 'emp005', name: 'Zain Iqbal', contact: '0312-1112233', status: 'Active', forms: 300, region: 'SOUTH', city: 'KARACHI', joined: '2022-11-25' },
+    { id: 'emp006', name: 'Ahmed Raza', contact: '0333-4445555', status: 'Active', forms: 180, region: 'CENTRAL', city: 'LAHORE', joined: '2023-09-10' },
+    { id: 'emp007', name: 'Maria Khan', contact: '0345-7778888', status: 'Active', forms: 95, region: 'CENTRAL', city: 'LAHORE', joined: '2024-02-15' },
+    { id: 'emp008', name: 'Bilal Ahmed', contact: '0301-2223333', status: 'Active', forms: 120, region: 'CENTRAL', city: 'SUKKAR', joined: '2023-11-01' },
+    { id: 'emp009', name: 'Sanaullah', contact: '0332-9990000', status: 'Inactive', forms: 60, region: 'SOUTH', city: 'HYDERABAD', joined: '2024-04-05' },
+    { id: 'emp010', name: 'Usman Ali', contact: '0315-8889999', status: 'Active', forms: 250, region: 'SOUTH', city: 'KARACHI', joined: '2022-07-20' }
+];
 
-        // Generic modal handler for employees
-        function openGenericModal(title, icon, content) {
-            document.getElementById('modalTitle').textContent = title;
-            document.getElementById('modalIcon').className = `fas fa-${icon}`;
-            document.getElementById('modalBody').innerHTML = content;
-            document.getElementById('genericModal').style.display = 'flex';
-        }
+// ==============================================
+// UTILITY FUNCTIONS
+// ==============================================
+function toggleTheme() {
+    const body = document.body;
+    const themeToggleBtn = document.querySelector('.theme-toggle .btn');
+    body.classList.toggle('dark-theme');
+    
+    if (body.classList.contains('dark-theme')) {
+        themeToggleBtn.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+    } else {
+        themeToggleBtn.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+    }
+    
+    if (monthlyChart) monthlyChart.update();
+    if (banksChart) banksChart.update();
+    if (statusChart) statusChart.update();
+    if (employeeFormsChart) employeeFormsChart.update();
+}
 
-        function closeGenericModal() {
-            document.getElementById('genericModal').style.display = 'none';
-            if (employeeFormsChart) {
-                employeeFormsChart.destroy();
-                employeeFormsChart = null;
-            }
-        }
-
-        // 1. Open Region Modal (Shows Cities)
-        function openEmployeeRegionModal(regionCode) {
-            const regionData = employeeRegionsData[regionCode];
-            const content = `
-                <div class="modal-grid">
-                    ${Object.entries(regionData.cities).map(([cityCode, cityData]) => `
-                        <div class="modal-item" onclick="openEmployeeCityModal('${regionCode}', '${cityCode}', event)">
-                            <div class="modal-item-name">${cityData.name}</div>
-                            <div class="modal-item-count">${cityData.count} Employees</div>
-                        </div>
-                    `).join('')}
-                </div>
-            `;
-            openGenericModal(`${regionData.name} - Cities (${regionData.count})`, 'map-marked-alt', content);
-        }
-
-        // 2. Open City Modal (Shows Employee List)
-        async function openEmployeeCityModal(regionCode, cityCode, event) {
-            event.stopPropagation();
-
-            const cityData = employeeRegionsData[regionCode].cities[cityCode];
-            const title = `${cityData.name} - Employees (${cityData.count})`;
-            const cityKey = `${regionCode}_${cityCode}`;
-            
-            openGenericModal(title, 'city', `
-                <div style="text-align: center; padding: 20px;">
-                    <div class="small-spinner" style="border-top: 2px solid var(--primary);"></div>
-                    <p>Loading employee list...</p>
-                </div>
-            `);
-
-            try {
-                let employeeList = employeeListCache[cityKey];
-                
-                if (!employeeList) {
-                    const response = await fetchEmployeeData(N8N_EMPLOYEE_DETAIL_WEBHOOK, {
-                        action: 'get_employee_list',
-                        region: regionCode,
-                        city: cityCode
-                    });
-                    
-                    if (response.success) {
-                        employeeList = response.employees;
-                        employeeListCache[cityKey] = employeeList;
-                    } else {
-                        throw new Error('Failed to load employee list');
-                    }
-                }
-
-                const content = `
-                    <div class="employee-list-container">
-                        <table class="employee-list-table">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Contact</th>
-                                    <th>Status</th>
-                                    <th>Forms Submitted</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                ${employeeList.map(employee => `
-                                    <tr onclick="openEmployeeDashboardModal('${employee.id}', '${employee.name}', event)">
-                                        <td>${employee.name}</td>
-                                        <td>${employee.contact}</td>
-                                        <td><span class="employee-status-badge status-${employee.status.toLowerCase().replace(' ', '')}">${employee.status}</span></td>
-                                        <td>${employee.forms}</td>
-                                    </tr>
-                                `).join('')}
-                            </tbody>
-                        </table>
-                    </div>
-                `;
-                openGenericModal(title, 'city', content);
-            } catch (error) {
-                console.error('Error loading employee list:', error);
-                openGenericModal(title, 'exclamation-triangle', `<p style="color: var(--danger);">Failed to load employee list. Please try again later.</p>`);
-            }
-        }
-
-        // 3. Open Employee Dashboard Modal (Shows Details and Graph)
-        async function openEmployeeDashboardModal(employeeId, employeeName, event) {
-            event.stopPropagation();
-
-            const title = `${employeeName} - Performance Dashboard`;
-
-            openGenericModal(title, 'user', `
-                <div style="text-align: center; padding: 20px;">
-                    <div class="small-spinner" style="border-top: 2px solid var(--primary);"></div>
-                    <p>Loading employee dashboard...</p>
-                </div>
-            `);
-            
-            try {
-                const response = await fetchEmployeeData(N8N_EMPLOYEE_DETAIL_WEBHOOK, {
-                    action: 'get_employee_forms_graph',
-                    employeeId: employeeId
-                });
-
-                if (!response.success) {
-                    throw new Error('Failed to load employee detail');
-                }
-
-                const detail = response.detail;
-                const graph = response.graph;
-                const totalForms = graph.forms.reduce((sum, val) => sum + val, 0);
-                const joinDate = new Date(detail.joined);
-                const monthsSinceJoin = Math.floor((new Date() - joinDate) / (30.44 * 24 * 60 * 60 * 1000));
-                const avgFormsPerMonth = monthsSinceJoin > 0 ? Math.round(totalForms / monthsSinceJoin) : 0;
-
-                const content = `
-                    <div class="employee-dashboard-panel">
-                        <h3>Employee Information</h3>
-                        <div class="employee-info-row">
-                            <span class="employee-info-label">Name:</span>
-                            <span class="employee-info-value">${detail.name}</span>
-                        </div>
-                        <div class="employee-info-row">
-                            <span class="employee-info-label">Contact:</span>
-                            <span class="employee-info-value">${detail.contact}</span>
-                        </div>
-                        <div class="employee-info-row">
-                            <span class="employee-info-label">Status:</span>
-                            <span class="employee-info-value"><span class="employee-status-badge status-${detail.status.toLowerCase().replace(' ', '')}">${detail.status}</span></span>
-                        </div>
-                        <div class="employee-info-row">
-                            <span class="employee-info-label">Region/City:</span>
-                            <span class="employee-info-value">${detail.region} / ${detail.city}</span>
-                        </div>
-                        <div class="employee-info-row">
-                            <span class="employee-info-label">Date Joined:</span>
-                            <span class="employee-info-value">${new Date(detail.joined).toLocaleDateString()}</span>
-                        </div>
-                        <div class="employee-info-row">
-                            <span class="employee-info-label">Months with Company:</span>
-                            <span class="employee-info-value">${monthsSinceJoin}</span>
-                        </div>
-                        <div class="employee-info-row">
-                            <span class="employee-info-label">Total Forms (Lifetime):</span>
-                            <span class="employee-info-value">${totalForms}</span>
-                        </div>
-                        <div class="employee-info-row">
-                            <span class="employee-info-label">Average Forms/Month:</span>
-                            <span class="employee-info-value">${avgFormsPerMonth}</span>
-                        </div>
-                    </div>
-                    
-                    <div class="employee-forms-graph-container">
-                        <canvas id="employeeFormsChart"></canvas>
-                    </div>
-                `;
-                
-                openGenericModal(title, 'user', content);
-                
-                setTimeout(() => {
-                    renderEmployeeFormsChart('employeeFormsChart', graph.labels, graph.forms);
-                }, 50);
-                
-            } catch (error) {
-                console.error('Error loading employee dashboard:', error);
-                openGenericModal(title, 'exclamation-triangle', `<p style="color: var(--danger);">Failed to load employee dashboard. Please try again later.</p>`);
-            }
-        }
-
-        // Render Employee Forms Chart
-        function renderEmployeeFormsChart(canvasId, labels, data) {
-            const ctx = document.getElementById(canvasId).getContext('2d');
-            if (employeeFormsChart) employeeFormsChart.destroy();
-            
-            const isDark = document.body.classList.contains('dark-theme');
-            const color = isDark ? '#2ecc71' : '#27ae60';
-
-            employeeFormsChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Forms Submitted by Month',
-                        data: data,
-                        backgroundColor: color,
-                        borderColor: color,
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'Forms Count',
-                                color: isDark ? 'white' : 'black'
-                            },
-                            ticks: {
-                                color: isDark ? 'white' : 'black'
-                            },
-                            grid: {
-                                color: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
-                            }
-                        },
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Month/Year',
-                                color: isDark ? 'white' : 'black'
-                            },
-                            ticks: {
-                                maxTicksLimit: 12,
-                                color: isDark ? 'white' : 'black'
-                            },
-                            grid: {
-                                color: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        title: {
-                            display: true,
-                            text: 'Monthly Forms Submission History',
-                            color: isDark ? 'white' : 'black'
-                        }
-                    }
-                }
-            });
-        }
-
-        // ==============================================
-        // EXISTING FUNCTIONS FROM SECOND HTML (UNCHANGED)
-        // ==============================================
-        
-        // Theme Toggle
-        function toggleTheme() {
-            const body = document.body;
-            const isDark = body.classList.contains('dark-theme');
-            body.classList.remove(isDark ? 'dark-theme' : 'light-theme');
-            body.classList.add(isDark ? 'light-theme' : 'dark-theme');
-            
-            if (monthlyChart) monthlyChart.update();
-            if (banksChart) banksChart.update();
-            if (statusChart) statusChart.update();
-            if (employeeFormsChart) employeeFormsChart.update();
-        }
-
-        // Modal Functions
-        function openModal(type, title, data) {
-            currentModalType = type;
-            document.getElementById('modalRegionTitle').textContent = title;
-            
-            if (type === 'city') {
-                loadLocationData(data.region, data.city);
-            } else {
-                document.getElementById('modalContent').innerHTML = generateModalContent(type, data);
-                document.getElementById('regionModal').style.display = 'flex';
-            }
-        }
-
-        function closeModal() {
-            document.getElementById('regionModal').style.display = 'none';
-            currentModalType = '';
-            currentRegion = '';
-            currentCity = '';
-        }
-
-        async function loadLocationData(region, city) {
-            document.getElementById('modalContent').innerHTML = `
-                <div style="text-align: center; padding: 20px;">
-                    <div class="small-spinner"></div>
-                    <p>Loading location data...</p>
-                </div>
-            `;
-            document.getElementById('regionModal').style.display = 'flex';
-            
-            try {
-                const requestData = {
-                    action: "get_location_data",
-                    region: region,
-                    city: city,
-                    fromMonth: "",
-                    toMonth: ""
-                };
-                
-                console.log('Loading location data for:', { region, city });
-                
-                const response = await fetch(N8N_LOCATION_DATA_WEBHOOK, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(requestData)
-                });
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                
-                const data = await response.json();
-                console.log('Location data received:', data);
-                
-                const cityKey = `${region}_${city}`;
-                currentLocationData[cityKey] = data.locations || {};
-                
-                document.getElementById('modalContent').innerHTML = generateModalContent('city', { 
-                    region: region, 
-                    city: city,
-                    locations: data.locations || {}
-                });
-                
-            } catch (error) {
-                console.error('Error loading location data:', error);
-                document.getElementById('modalContent').innerHTML = generateModalContent('city', { 
-                    region: region, 
-                    city: city,
-                    locations: {}
-                });
-            }
-        }
-
-        function generateModalContent(type, data) {
-            let html = '';
-            
-            if (type === 'region') {
-                const region = regionsData[data.region];
-                html = `<div class="modal-grid" id="citiesGrid">`;
-                
-                Object.entries(region.cities).forEach(([cityCode, cityData]) => {
-                    html += `
-                        <div class="modal-item" onclick="openCityModal('${data.region}', '${cityCode}')">
-                            <div class="modal-item-name">${cityData.name}</div>
-                            <div class="modal-item-count">${cityData.totalForms}</div>
-                        </div>
-                    `;
-                });
-                
-                html += `</div>`;
-            } else if (type === 'city') {
-                const city = regionsData[data.region].cities[data.city];
-                const cityKey = `${data.region}_${data.city}`;
-                const locationStats = data.locations || currentLocationData[cityKey] || {};
-                
-                html = `<div class="modal-grid" id="locationsGrid">`;
-                
-                if (city.locations) {
-                    city.locations.forEach(location => {
-                        const count = locationStats[location] || 0;
-                        html += `
-                            <div class="modal-item">
-                                <div class="modal-item-name">${location}</div>
-                                <div class="modal-item-count">${count}</div>
-                            </div>
-                        `;
-                    });
-                } else {
-                    html += `<p>No location data available for ${city.name}</p>`;
-                }
-                
-                html += `</div>`;
-            }
-            
-            return html;
-        }
-
-        function openRegionModal(region) {
-            currentRegion = region;
-            openModal('region', `${regionsData[region].name} - Cities`, { region: region });
-        }
-
-        function openCityModal(region, city) {
-            currentCity = city;
-            openModal('city', `${regionsData[region].cities[city].name} - Locations`, { 
-                region: region, 
-                city: city 
-            });
-        }
-
-        // Update Regions Display
-        function updateRegionsDisplay() {
-            const regionsGrid = document.getElementById('regionsGrid');
-            regionsGrid.innerHTML = '';
-            
-            Object.entries(regionsData).forEach(([regionCode, regionData]) => {
-                const regionCard = document.createElement('div');
-                regionCard.className = 'region-card';
-                regionCard.onclick = () => openRegionModal(regionCode);
-                
-                regionCard.innerHTML = `
-                    <div class="region-name">${regionData.name}</div>
-                    <div class="region-count">${regionData.totalForms}</div>
-                `;
-                
-                regionsGrid.appendChild(regionCard);
-            });
-        }
-
-        // Refresh region data
-        async function refreshRegionData() {
-            console.log('=== REFRESHING REGION DATA ===');
-            
-            document.getElementById('regionLoading').style.display = 'block';
-            const refreshBtn = document.getElementById('regionRefreshBtn');
-            refreshBtn.disabled = true;
-            refreshBtn.innerHTML = '<div class="small-spinner"></div> Loading...';
-            
-            currentLocationData = {};
-            
-            try {
-                const requestData = {
-                    action: "get_region_data",
-                    fromMonth: "",
-                    toMonth: ""
-                };
-                
-                console.log('Sending to region webhook:', requestData);
-                
-                const response = await fetch(N8N_REGION_DATA_WEBHOOK, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(requestData)
-                });
-                
-                console.log('Region response status:', response.status);
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                
-                const data = await response.json();
-                console.log('Region data received:', data);
-                
-                if (data && data.regions) {
-                    updateRegionsWithRealData(data);
-                } else if (data && data.totalForms !== undefined) {
-                    updateRegionsWithRealData({ regions: [data] });
-                } else {
-                    console.log('No valid region data found');
-                }
-                
-            } catch (error) {
-                console.error('Error loading region data:', error);
-                alert('Failed to load region data. Check console for details.');
-            } finally {
-                document.getElementById('regionLoading').style.display = 'none';
-                refreshBtn.disabled = false;
-                refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh Regions';
-            }
-        }
-
-        function updateRegionsWithRealData(regionData) {
-            console.log('Updating regions with real data:', regionData);
-            
-            Object.keys(regionsData).forEach(region => {
-                regionsData[region].totalForms = 0;
-                Object.keys(regionsData[region].cities).forEach(city => {
-                    regionsData[region].cities[city].totalForms = 0;
-                });
-            });
-            
-            if (Array.isArray(regionData.regions)) {
-                regionData.regions.forEach(region => {
-                    if (regionsData[region.region]) {
-                        regionsData[region.region].totalForms = region.totalForms || 0;
-                        
-                        if (region.cities) {
-                            region.cities.forEach(city => {
-                                if (regionsData[region.region].cities[city.city]) {
-                                    regionsData[region.region].cities[city.city].totalForms = city.totalForms || 0;
-                                }
-                            });
-                        }
-                    }
-                });
-            }
-            
-            updateRegionsDisplay();
-        }
-
-        async function loadDashboardData() {
-            const fromMonth = document.getElementById('fromMonth').value;
-            const toMonth = document.getElementById('toMonth').value;
-            
-            console.log('=== REFRESHING DASHBOARD DATA ===');
-            console.log('Filters:', { fromMonth, toMonth });
-            
-            document.getElementById('loading').style.display = 'block';
-            
-            try {
-                const requestData = {
-                    action: "get_dashboard_data",
-                    fromMonth: fromMonth,
-                    toMonth: toMonth
-                };
-                
-                console.log('Sending to dashboard webhook:', requestData);
-                
-                const response = await fetch(N8N_DASHBOARD_WEBHOOK, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(requestData)
-                });
-                
-                console.log('Dashboard response status:', response.status);
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                
-                const data = await response.json();
-                console.log('Dashboard data received:', data);
-                
-                document.getElementById('loading').style.display = 'none';
-                
-                if (data) {
-                    let dashboardData;
-                    if (Array.isArray(data) && data.length > 0) {
-                        dashboardData = data[0];
-                    } else if (data.totalForms !== undefined) {
-                        dashboardData = data;
-                    } else {
-                        console.log('No valid data found');
-                        resetDashboard();
-                        return;
-                    }
-                    
-                    updateDashboard(dashboardData);
-                    
-                } else {
-                    console.log('No data in response');
-                    resetDashboard();
-                }
-                
-            } catch (error) {
-                console.error('Error loading dashboard data:', error);
-                document.getElementById('loading').style.display = 'none';
-                resetDashboard();
-            }
-        }
-
-        function updateDashboard(dashboardData) {
-            console.log('Updating dashboard with:', dashboardData);
-            
-            const totalForms = dashboardData.totalForms || 0;
-            document.getElementById('totalForms').textContent = totalForms;
-            
-            updateCharts(dashboardData);
-        }
-
-        function resetDashboard() {
-            document.getElementById('totalForms').textContent = '0';
-            
-            if (monthlyChart) monthlyChart.destroy();
-            if (banksChart) banksChart.destroy();
-            if (statusChart) statusChart.destroy();
-            
-            createEmptyCharts();
-        }
-
-        function createEmptyCharts() {
-            const ctx1 = document.getElementById('monthlyChart').getContext('2d');
-            monthlyChart = new Chart(ctx1, {
-                type: 'bar',
-                data: {
-                    labels: ['No Data'],
-                    datasets: [{
-                        label: 'Forms',
-                        data: [0],
-                        backgroundColor: '#3498db',
-                        borderColor: '#2980b9',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: { precision: 0 }
-                        }
-                    },
-                    plugins: {
-                        legend: { display: false }
-                    }
-                }
-            });
-            
-            const ctx2 = document.getElementById('banksChart').getContext('2d');
-            banksChart = new Chart(ctx2, {
-                type: 'pie',
-                data: {
-                    labels: ['No Data'],
-                    datasets: [{
-                        data: [100],
-                        backgroundColor: ['#e1e5e9']
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'right',
-                            labels: {
-                                boxWidth: 10,
-                                padding: 8,
-                                font: { size: 10 }
-                            }
-                        }
-                    }
-                }
-            });
-            
-            const ctx3 = document.getElementById('statusChart').getContext('2d');
-            statusChart = new Chart(ctx3, {
-                type: 'doughnut',
-                data: {
-                    labels: ['No Data'],
-                    datasets: [{
-                        data: [100],
-                        backgroundColor: ['#e1e5e9']
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'right',
-                            labels: {
-                                boxWidth: 10,
-                                padding: 8,
-                                font: { size: 10 }
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-        function updateCharts(dashboardData) {
-            if (monthlyChart) monthlyChart.destroy();
-            if (dashboardData.months && dashboardData.months.length > 0) {
-                const months = dashboardData.months.map(m => m.month);
-                const counts = dashboardData.months.map(m => m.count);
-                
-                const ctx1 = document.getElementById('monthlyChart').getContext('2d');
-                monthlyChart = new Chart(ctx1, {
-                    type: 'bar',
-                    data: {
-                        labels: months,
-                        datasets: [{
-                            label: 'Forms Submitted',
-                            data: counts,
-                            backgroundColor: '#3498db',
-                            borderColor: '#2980b9',
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                ticks: {
-                                    precision: 0,
-                                    font: { size: 9 }
-                                }
-                            },
-                            x: {
-                                ticks: {
-                                    font: { size: 9 }
-                                }
-                            }
-                        },
-                        plugins: {
-                            legend: { display: false }
-                        }
-                    }
-                });
-            }
-            
-            if (banksChart) banksChart.destroy();
-            if (dashboardData.banks && dashboardData.banks.length > 0) {
-                const topBanks = dashboardData.banks.slice(0, 5);
-                const bankNames = topBanks.map(b => b.bank);
-                const bankCounts = topBanks.map(b => b.count);
-                
-                const bankColors = ['#3498db', '#2ecc71', '#e74c3c', '#f39c12', '#9b59b6'];
-                
-                const ctx2 = document.getElementById('banksChart').getContext('2d');
-                banksChart = new Chart(ctx2, {
-                    type: 'pie',
-                    data: {
-                        labels: bankNames,
-                        datasets: [{
-                            data: bankCounts,
-                            backgroundColor: bankColors.slice(0, topBanks.length)
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                position: 'right',
-                                labels: {
-                                    boxWidth: 8,
-                                    padding: 6,
-                                    font: { size: 9 }
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-            
-            if (statusChart) statusChart.destroy();
-            if (dashboardData.statuses && dashboardData.statuses.length > 0) {
-                const statusNames = dashboardData.statuses.map(s => s.status);
-                const statusCounts = dashboardData.statuses.map(s => s.count);
-                
-                const statusColors = statusNames.map(status => {
-                    if (status.includes('DEPLOYED')) return '#2ecc71';
-                    if (status.includes('PENDING')) return '#f39c12';
-                    if (status.includes('SENT')) return '#3498db';
-                    if (status.includes('PRINT')) return '#9b59b6';
-                    if (status.includes('CLOSED')) return '#95a5a6';
-                    if (status.includes('IBAN')) return '#1abc9c';
-                    if (status.includes('HANDED')) return '#e74c3c';
-                    if (status.includes('RETURN')) return '#c0392b';
-                    if (status.includes('WAITING')) return '#f1c40f';
-                    return '#7f8c8d';
-                });
-                
-                const ctx3 = document.getElementById('statusChart').getContext('2d');
-                statusChart = new Chart(ctx3, {
-                    type: 'doughnut',
-                    data: {
-                        labels: statusNames,
-                        datasets: [{
-                            data: statusCounts,
-                            backgroundColor: statusColors
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                position: 'right',
-                                labels: {
-                                    boxWidth: 8,
-                                    padding: 6,
-                                    font: { size: 9 }
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('=== DASHBOARD INITIALIZING ===');
-            
-            createEmptyCharts();
-            updateRegionsDisplay();
-            
-            // Set default month filters
-            const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-            const now = new Date();
-            const currentMonthIndex = now.getMonth();
-            const currentMonth = months[currentMonthIndex];
-            
-            document.getElementById('fromMonth').value = months[currentMonthIndex - 1] || 'JAN';
-            document.getElementById('toMonth').value = currentMonth;
-            
-            // Load initial dashboard data
-            loadDashboardData();
-            
-            // Load employee data on startup
-            refreshEmployeeData();
-            
-            // Auto-refresh dashboard every 5 minutes
-            setInterval(loadDashboardData, 5 * 60 * 1000);
-            
-            // Auto-refresh employee data every 10 minutes
-            setInterval(refreshEmployeeData, 10 * 60 * 1000);
-            
-            // Close modals when clicking outside
-            document.getElementById('regionModal').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    closeModal();
-                }
-            });
-            
-            document.getElementById('genericModal').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    closeGenericModal();
-                }
-            });
+// ==============================================
+// WEBHOOK FUNCTIONS - ALL API CALLS
+// ==============================================
+async function fetchEmployeeData(url, data) {
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
         });
-    </script>
+        
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const result = await response.json();
+        console.log('Employee webhook response:', result);
+        return result;
+    } catch (error) {
+        console.error('Error calling employee webhook:', error);
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        if (url === N8N_EMPLOYEE_DATA_WEBHOOK) {
+            return { success: true, employeeData: mockEmployeeData };
+        } else if (url === N8N_EMPLOYEE_DETAIL_WEBHOOK && data.action === 'get_employee_list') {
+            const cityList = mockEmployeeList.filter(e => e.region === data.region && e.city === data.city);
+            employeeListCache[`${data.region}_${data.city}`] = cityList;
+            return { success: true, employees: cityList };
+        } else if (url === N8N_EMPLOYEE_DETAIL_WEBHOOK && data.action === 'get_employee_forms_graph') {
+            const employeeDetail = mockEmployeeList.find(e => e.id === data.employeeId) || {};
+            const graphData = {
+                labels: ['Jan 2025', 'Feb 2025', 'Mar 2025', 'Apr 2025', 'May 2025', 'Jun 2025', 'Jul 2025', 'Aug 2025', 'Sep 2025', 'Oct 2025', 'Nov 2025', 'Dec 2025'],
+                forms: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            };
+            return { success: true, detail: employeeDetail, graph: graphData };
+        }
+        return { success: false, error: error.message };
+    }
+}
+
+function processEmployeeData(response) {
+    if (response.employeeData) return response.employeeData;
+    if (response.regions && Array.isArray(response.regions)) {
+        const processedData = {};
+        response.regions.forEach(region => {
+            processedData[region.region] = {
+                name: region.regionName || region.region,
+                count: region.employeeCount || region.totalEmployees || 0,
+                cities: {}
+            };
+            if (region.cities && Array.isArray(region.cities)) {
+                region.cities.forEach(city => {
+                    processedData[region.region].cities[city.city] = {
+                        name: city.cityName || city.city,
+                        count: city.employeeCount || 0
+                    };
+                });
+            }
+        });
+        return processedData;
+    }
+    return mockEmployeeData;
+}
+
+// ==============================================
+// EMPLOYEE STATUS FUNCTIONS
+// ==============================================
+async function refreshEmployeeData() {
+    document.getElementById('employeeLoading').style.display = 'block';
+    const refreshBtn = document.getElementById('employeeRefreshBtn');
+    refreshBtn.disabled = true;
+    refreshBtn.innerHTML = '<div class="small-spinner"></div> Loading...';
+    
+    try {
+        const response = await fetchEmployeeData(N8N_EMPLOYEE_DATA_WEBHOOK, { 
+            action: "get_employee_data",
+            fromMonth: document.getElementById('fromMonth').value,
+            toMonth: document.getElementById('toMonth').value
+        });
+        
+        if (response.success) {
+            if (response.employeeData) {
+                employeeRegionsData = response.employeeData;
+            } else if (response.regions) {
+                employeeRegionsData = processEmployeeData(response);
+            } else {
+                employeeRegionsData = mockEmployeeData;
+            }
+            updateEmployeeRegionsDisplay();
+        } else {
+            employeeRegionsData = mockEmployeeData;
+            updateEmployeeRegionsDisplay();
+            alert('Using offline employee data. Webhook may be unavailable.');
+        }
+    } catch (error) {
+        employeeRegionsData = mockEmployeeData;
+        updateEmployeeRegionsDisplay();
+        alert('Error loading employee data. Using offline data.');
+    } finally {
+        document.getElementById('employeeLoading').style.display = 'none';
+        refreshBtn.disabled = false;
+        refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh Employees';
+    }
+}
+
+function updateEmployeeRegionsDisplay() {
+    const grid = document.getElementById('employeeRegionsGrid');
+    grid.innerHTML = '';
+    
+    Object.entries(employeeRegionsData).forEach(([regionCode, regionData]) => {
+        const card = document.createElement('div');
+        card.className = 'employee-region-card';
+        card.onclick = () => openEmployeeRegionModal(regionCode);
+        card.innerHTML = `
+            <div class="employee-region-name">${regionData.name}</div>
+            <div class="employee-region-count">${regionData.count}</div>
+        `;
+        grid.appendChild(card);
+    });
+}
+
+function openGenericModal(title, icon, content) {
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalIcon').className = `fas fa-${icon}`;
+    document.getElementById('modalBody').innerHTML = content;
+    document.getElementById('genericModal').style.display = 'flex';
+}
+
+function closeGenericModal() {
+    document.getElementById('genericModal').style.display = 'none';
+    if (employeeFormsChart) {
+        employeeFormsChart.destroy();
+        employeeFormsChart = null;
+    }
+}
+
+function openEmployeeRegionModal(regionCode) {
+    const regionData = employeeRegionsData[regionCode];
+    const content = `
+        <div class="modal-grid">
+            ${Object.entries(regionData.cities).map(([cityCode, cityData]) => `
+                <div class="modal-item" onclick="openEmployeeCityModal('${regionCode}', '${cityCode}', event)">
+                    <div class="modal-item-name">${cityData.name}</div>
+                    <div class="modal-item-count">${cityData.count} Employees</div>
+                </div>
+            `).join('')}
+        </div>
+    `;
+    openGenericModal(`${regionData.name} - Cities (${regionData.count})`, 'map-marked-alt', content);
+}
+
+async function openEmployeeCityModal(regionCode, cityCode, event) {
+    event.stopPropagation();
+    const cityData = employeeRegionsData[regionCode].cities[cityCode];
+    const title = `${cityData.name} - Employees (${cityData.count})`;
+    const cityKey = `${regionCode}_${cityCode}`;
+    
+    openGenericModal(title, 'city', `
+        <div style="text-align: center; padding: 20px;">
+            <div class="small-spinner" style="border-top: 2px solid var(--primary);"></div>
+            <p>Loading employee list...</p>
+        </div>
+    `);
+
+    try {
+        let employeeList = employeeListCache[cityKey];
+        if (!employeeList) {
+            const response = await fetchEmployeeData(N8N_EMPLOYEE_DETAIL_WEBHOOK, {
+                action: 'get_employee_list',
+                region: regionCode,
+                city: cityCode,
+                fromMonth: document.getElementById('fromMonth').value,
+                toMonth: document.getElementById('toMonth').value
+            });
+            if (response.success) {
+                employeeList = response.employees || response.data || [];
+                employeeListCache[cityKey] = employeeList;
+            } else {
+                throw new Error('Failed to load employee list from webhook');
+            }
+        }
+
+        const content = `
+            <div class="employee-list-container">
+                <table class="employee-list-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th><th>Contact</th><th>Status</th><th>Forms Submitted</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${employeeList.map(employee => {
+                            const empId = employee.id || employee.employeeId || employee.empId || 'unknown';
+                            const empName = employee.name || employee.employeeName || 'Unknown';
+                            const empContact = employee.contact || employee.phone || employee.mobile || 'N/A';
+                            const empStatus = employee.status || 'Active';
+                            const empForms = employee.forms || employee.formsCount || employee.totalForms || 0;
+                            const statusClass = empStatus.toLowerCase().replace(' ', '');
+                            return `
+                                <tr onclick="openEmployeeDashboardModal('${empId}', '${empName.replace(/'/g, "\\'")}', event)">
+                                    <td>${empName}</td>
+                                    <td>${empContact}</td>
+                                    <td><span class="employee-status-badge status-${statusClass}">${empStatus}</span></td>
+                                    <td>${empForms}</td>
+                                </tr>
+                            `;
+                        }).join('')}
+                    </tbody>
+                </table>
+            </div>
+        `;
+        openGenericModal(title, 'city', content);
+    } catch (error) {
+        openGenericModal(title, 'exclamation-triangle', `
+            <p style="color: var(--danger); padding: 20px; text-align: center;">
+                <i class="fas fa-exclamation-circle"></i><br>
+                Failed to load employee list. Please try again later.<br>
+                <small>Error: ${error.message}</small>
+            </p>
+        `);
+    }
+}
+
+async function openEmployeeDashboardModal(employeeId, employeeName, event) {
+    event.stopPropagation();
+    const title = `${employeeName} - Performance Dashboard`;
+    openGenericModal(title, 'user', `
+        <div style="text-align: center; padding: 20px;">
+            <div class="small-spinner" style="border-top: 2px solid var(--primary);"></div>
+            <p>Loading employee dashboard...</p>
+        </div>
+    `);
+    
+    try {
+        const response = await fetchEmployeeData(N8N_EMPLOYEE_DETAIL_WEBHOOK, {
+            action: 'get_employee_forms_graph',
+            employeeId: employeeId,
+            fromMonth: document.getElementById('fromMonth').value,
+            toMonth: document.getElementById('toMonth').value
+        });
+
+        if (!response.success) throw new Error('Failed to load employee detail from webhook');
+
+        const detail = response.detail || response.data || {};
+        const graph = response.graph || response.formsData || { 
+            labels: ['Jan 2025', 'Feb 2025', 'Mar 2025', 'Apr 2025', 'May 2025', 'Jun 2025', 'Jul 2025', 'Aug 2025', 'Sep 2025', 'Oct 2025', 'Nov 2025', 'Dec 2025'],
+            forms: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        };
+        
+        const totalForms = Array.isArray(graph.forms) ? graph.forms.reduce((sum, val) => sum + val, 0) : 0;
+        const joinDate = detail.joined ? new Date(detail.joined) : new Date('2023-01-01');
+        const monthsSinceJoin = Math.max(1, Math.floor((new Date() - joinDate) / (30.44 * 24 * 60 * 60 * 1000)));
+        const avgFormsPerMonth = monthsSinceJoin > 0 ? Math.round(totalForms / monthsSinceJoin) : 0;
+
+        const content = `
+            <div class="employee-dashboard-panel">
+                <h3>Employee Information</h3>
+                <div class="employee-info-row">
+                    <span class="employee-info-label">Name:</span>
+                    <span class="employee-info-value">${detail.name || employeeName}</span>
+                </div>
+                <div class="employee-info-row">
+                    <span class="employee-info-label">Contact:</span>
+                    <span class="employee-info-value">${detail.contact || detail.phone || 'N/A'}</span>
+                </div>
+                <div class="employee-info-row">
+                    <span class="employee-info-label">Status:</span>
+                    <span class="employee-info-value">
+                        <span class="employee-status-badge status-${(detail.status || 'Active').toLowerCase().replace(' ', '')}">
+                            ${detail.status || 'Active'}
+                        </span>
+                    </span>
+                </div>
+                <div class="employee-info-row">
+                    <span class="employee-info-label">Region/City:</span>
+                    <span class="employee-info-value">${detail.region || 'N/A'} / ${detail.city || 'N/A'}</span>
+                </div>
+                <div class="employee-info-row">
+                    <span class="employee-info-label">Date Joined:</span>
+                    <span class="employee-info-value">${detail.joined ? new Date(detail.joined).toLocaleDateString() : 'N/A'}</span>
+                </div>
+                <div class="employee-info-row">
+                    <span class="employee-info-label">Months with Company:</span>
+                    <span class="employee-info-value">${monthsSinceJoin}</span>
+                </div>
+                <div class="employee-info-row">
+                    <span class="employee-info-label">Total Forms (Lifetime):</span>
+                    <span class="employee-info-value">${totalForms}</span>
+                </div>
+                <div class="employee-info-row">
+                    <span class="employee-info-label">Average Forms/Month:</span>
+                    <span class="employee-info-value">${avgFormsPerMonth}</span>
+                </div>
+            </div>
+            <div class="employee-forms-graph-container">
+                <canvas id="employeeFormsChart"></canvas>
+            </div>
+        `;
+        
+        openGenericModal(title, 'user', content);
+        setTimeout(() => {
+            if (graph.labels && graph.forms) {
+                renderEmployeeFormsChart('employeeFormsChart', graph.labels, graph.forms);
+            } else {
+                renderEmptyEmployeeChart();
+            }
+        }, 50);
+    } catch (error) {
+        openGenericModal(title, 'exclamation-triangle', `
+            <p style="color: var(--danger); padding: 20px; text-align: center;">
+                <i class="fas fa-exclamation-circle"></i><br>
+                Failed to load employee dashboard. Please try again later.<br>
+                <small>Error: ${error.message}</small>
+            </p>
+        `);
+    }
+}
+
+function renderEmployeeFormsChart(canvasId, labels, data) {
+    const ctx = document.getElementById(canvasId).getContext('2d');
+    if (employeeFormsChart) employeeFormsChart.destroy();
+    const isDark = document.body.classList.contains('dark-theme');
+    const color = isDark ? '#2ecc71' : '#27ae60';
+
+    employeeFormsChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Forms Submitted by Month',
+                data: data,
+                backgroundColor: color,
+                borderColor: color,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Forms Count',
+                        color: isDark ? 'white' : 'black'
+                    },
+                    ticks: { color: isDark ? 'white' : 'black' },
+                    grid: { color: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)' }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Month/Year',
+                        color: isDark ? 'white' : 'black'
+                    },
+                    ticks: {
+                        maxTicksLimit: 12,
+                        color: isDark ? 'white' : 'black'
+                    },
+                    grid: { color: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)' }
+                }
+            },
+            plugins: {
+                legend: { display: false },
+                title: {
+                    display: true,
+                    text: 'Monthly Forms Submission History',
+                    color: isDark ? 'white' : 'black'
+                }
+            }
+        }
+    });
+}
+
+function renderEmptyEmployeeChart() {
+    const ctx = document.getElementById('employeeFormsChart').getContext('2d');
+    if (employeeFormsChart) employeeFormsChart.destroy();
+    const isDark = document.body.classList.contains('dark-theme');
+    const color = isDark ? '#2ecc71' : '#27ae60';
+
+    employeeFormsChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['No Data Available'],
+            datasets: [{
+                label: 'Forms Submitted',
+                data: [0],
+                backgroundColor: color,
+                borderColor: color,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Forms Count',
+                        color: isDark ? 'white' : 'black'
+                    },
+                    ticks: { color: isDark ? 'white' : 'black' },
+                    grid: { color: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)' }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Month/Year',
+                        color: isDark ? 'white' : 'black'
+                    },
+                    ticks: { color: isDark ? 'white' : 'black' },
+                    grid: { color: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)' }
+                }
+            },
+            plugins: {
+                legend: { display: false },
+                title: {
+                    display: true,
+                    text: 'Monthly Forms Submission History',
+                    color: isDark ? 'white' : 'black'
+                }
+            }
+        }
+    });
+}
+
+// ==============================================
+// REGION & LOCATION FUNCTIONS
+// ==============================================
+function openModal(type, title, data) {
+    currentModalType = type;
+    document.getElementById('modalRegionTitle').textContent = title;
+    if (type === 'city') {
+        loadLocationData(data.region, data.city);
+    } else {
+        document.getElementById('modalContent').innerHTML = generateModalContent(type, data);
+        document.getElementById('regionModal').style.display = 'flex';
+    }
+}
+
+function closeModal() {
+    document.getElementById('regionModal').style.display = 'none';
+    currentModalType = '';
+    currentRegion = '';
+    currentCity = '';
+}
+
+async function loadLocationData(region, city) {
+    document.getElementById('modalContent').innerHTML = `
+        <div style="text-align: center; padding: 20px;">
+            <div class="small-spinner"></div>
+            <p>Loading location data...</p>
+        </div>
+    `;
+    document.getElementById('regionModal').style.display = 'flex';
+    
+    try {
+        const requestData = { action: "get_location_data", region: region, city: city, fromMonth: "", toMonth: "" };
+        const response = await fetch(N8N_LOCATION_DATA_WEBHOOK, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(requestData)
+        });
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json();
+        const cityKey = `${region}_${city}`;
+        currentLocationData[cityKey] = data.locations || {};
+        document.getElementById('modalContent').innerHTML = generateModalContent('city', { 
+            region: region, city: city, locations: data.locations || {}
+        });
+    } catch (error) {
+        document.getElementById('modalContent').innerHTML = generateModalContent('city', { 
+            region: region, city: city, locations: {}
+        });
+    }
+}
+
+function generateModalContent(type, data) {
+    let html = '';
+    if (type === 'region') {
+        const region = regionsData[data.region];
+        html = `<div class="modal-grid" id="citiesGrid">`;
+        Object.entries(region.cities).forEach(([cityCode, cityData]) => {
+            html += `
+                <div class="modal-item" onclick="openCityModal('${data.region}', '${cityCode}')">
+                    <div class="modal-item-name">${cityData.name}</div>
+                    <div class="modal-item-count">${cityData.totalForms}</div>
+                </div>
+            `;
+        });
+        html += `</div>`;
+    } else if (type === 'city') {
+        const city = regionsData[data.region].cities[data.city];
+        const cityKey = `${data.region}_${data.city}`;
+        const locationStats = data.locations || currentLocationData[cityKey] || {};
+        html = `<div class="modal-grid" id="locationsGrid">`;
+        if (city.locations) {
+            city.locations.forEach(location => {
+                const count = locationStats[location] || 0;
+                html += `
+                    <div class="modal-item">
+                        <div class="modal-item-name">${location}</div>
+                        <div class="modal-item-count">${count}</div>
+                    </div>
+                `;
+            });
+        } else {
+            html += `<p>No location data available for ${city.name}</p>`;
+        }
+        html += `</div>`;
+    }
+    return html;
+}
+
+function openRegionModal(region) {
+    currentRegion = region;
+    openModal('region', `${regionsData[region].name} - Cities`, { region: region });
+}
+
+function openCityModal(region, city) {
+    currentCity = city;
+    openModal('city', `${regionsData[region].cities[city].name} - Locations`, { region: region, city: city });
+}
+
+function updateRegionsDisplay() {
+    const regionsGrid = document.getElementById('regionsGrid');
+    regionsGrid.innerHTML = '';
+    Object.entries(regionsData).forEach(([regionCode, regionData]) => {
+        const regionCard = document.createElement('div');
+        regionCard.className = 'region-card';
+        regionCard.onclick = () => openRegionModal(regionCode);
+        regionCard.innerHTML = `
+            <div class="region-name">${regionData.name}</div>
+            <div class="region-count">${regionData.totalForms}</div>
+        `;
+        regionsGrid.appendChild(regionCard);
+    });
+}
+
+async function refreshRegionData() {
+    document.getElementById('regionLoading').style.display = 'block';
+    const refreshBtn = document.getElementById('regionRefreshBtn');
+    refreshBtn.disabled = true;
+    refreshBtn.innerHTML = '<div class="small-spinner"></div> Loading...';
+    currentLocationData = {};
+    
+    try {
+        const requestData = { action: "get_region_data", fromMonth: "", toMonth: "" };
+        const response = await fetch(N8N_REGION_DATA_WEBHOOK, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(requestData)
+        });
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json();
+        if (data && data.regions) {
+            updateRegionsWithRealData(data);
+        } else if (data && data.totalForms !== undefined) {
+            updateRegionsWithRealData({ regions: [data] });
+        }
+    } catch (error) {
+        alert('Failed to load region data. Check console for details.');
+    } finally {
+        document.getElementById('regionLoading').style.display = 'none';
+        refreshBtn.disabled = false;
+        refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh Regions';
+    }
+}
+
+function updateRegionsWithRealData(regionData) {
+    Object.keys(regionsData).forEach(region => {
+        regionsData[region].totalForms = 0;
+        Object.keys(regionsData[region].cities).forEach(city => {
+            regionsData[region].cities[city].totalForms = 0;
+        });
+    });
+    
+    if (Array.isArray(regionData.regions)) {
+        regionData.regions.forEach(region => {
+            if (regionsData[region.region]) {
+                regionsData[region.region].totalForms = region.totalForms || 0;
+                if (region.cities) {
+                    region.cities.forEach(city => {
+                        if (regionsData[region.region].cities[city.city]) {
+                            regionsData[region.region].cities[city.city].totalForms = city.totalForms || 0;
+                        }
+                    });
+                }
+            }
+        });
+    }
+    updateRegionsDisplay();
+}
+
+// ==============================================
+// DASHBOARD FUNCTIONS
+// ==============================================
+async function loadDashboardData() {
+    const fromMonth = document.getElementById('fromMonth').value;
+    const toMonth = document.getElementById('toMonth').value;
+    document.getElementById('loading').style.display = 'block';
+    
+    try {
+        const requestData = { action: "get_dashboard_data", fromMonth: fromMonth, toMonth: toMonth };
+        const response = await fetch(N8N_DASHBOARD_WEBHOOK, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(requestData)
+        });
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json();
+        document.getElementById('loading').style.display = 'none';
+        if (data) {
+            let dashboardData;
+            if (Array.isArray(data) && data.length > 0) {
+                dashboardData = data[0];
+            } else if (data.totalForms !== undefined) {
+                dashboardData = data;
+            } else {
+                resetDashboard();
+                return;
+            }
+            updateDashboard(dashboardData);
+        } else {
+            resetDashboard();
+        }
+    } catch (error) {
+        document.getElementById('loading').style.display = 'none';
+        resetDashboard();
+    }
+}
+
+function updateDashboard(dashboardData) {
+    const totalForms = dashboardData.totalForms || 0;
+    document.getElementById('totalForms').textContent = totalForms;
+    updateCharts(dashboardData);
+}
+
+function resetDashboard() {
+    document.getElementById('totalForms').textContent = '0';
+    if (monthlyChart) monthlyChart.destroy();
+    if (banksChart) banksChart.destroy();
+    if (statusChart) statusChart.destroy();
+    createEmptyCharts();
+}
+
+// ==============================================
+// CHART FUNCTIONS
+// ==============================================
+function createEmptyCharts() {
+    const ctx1 = document.getElementById('monthlyChart').getContext('2d');
+    monthlyChart = new Chart(ctx1, {
+        type: 'bar',
+        data: {
+            labels: ['No Data'],
+            datasets: [{ label: 'Forms', data: [0], backgroundColor: '#3498db', borderColor: '#2980b9', borderWidth: 1 }]
+        },
+        options: {
+            responsive: true, maintainAspectRatio: false,
+            scales: { y: { beginAtZero: true, ticks: { precision: 0 } } },
+            plugins: { legend: { display: false } }
+        }
+    });
+    
+    const ctx2 = document.getElementById('banksChart').getContext('2d');
+    banksChart = new Chart(ctx2, {
+        type: 'pie',
+        data: {
+            labels: ['No Data'],
+            datasets: [{ data: [100], backgroundColor: ['#e1e5e9'] }]
+        },
+        options: {
+            responsive: true, maintainAspectRatio: false,
+            plugins: { legend: { position: 'right', labels: { boxWidth: 10, padding: 8, font: { size: 10 } } } }
+        }
+    });
+    
+    const ctx3 = document.getElementById('statusChart').getContext('2d');
+    statusChart = new Chart(ctx3, {
+        type: 'doughnut',
+        data: {
+            labels: ['No Data'],
+            datasets: [{ data: [100], backgroundColor: ['#e1e5e9'] }]
+        },
+        options: {
+            responsive: true, maintainAspectRatio: false,
+            plugins: { legend: { position: 'right', labels: { boxWidth: 10, padding: 8, font: { size: 10 } } } }
+        }
+    });
+}
+
+function updateCharts(dashboardData) {
+    if (monthlyChart) monthlyChart.destroy();
+    if (dashboardData.months && dashboardData.months.length > 0) {
+        const months = dashboardData.months.map(m => m.month);
+        const counts = dashboardData.months.map(m => m.count);
+        const ctx1 = document.getElementById('monthlyChart').getContext('2d');
+        monthlyChart = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: months,
+                datasets: [{ label: 'Forms Submitted', data: counts, backgroundColor: '#3498db', borderColor: '#2980b9', borderWidth: 1 }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                scales: {
+                    y: { beginAtZero: true, ticks: { precision: 0, font: { size: 9 } } },
+                    x: { ticks: { font: { size: 9 } } }
+                },
+                plugins: { legend: { display: false } }
+            }
+        });
+    }
+    
+    if (banksChart) banksChart.destroy();
+    if (dashboardData.banks && dashboardData.banks.length > 0) {
+        const topBanks = dashboardData.banks.slice(0, 5);
+        const bankNames = topBanks.map(b => b.bank);
+        const bankCounts = topBanks.map(b => b.count);
+        const bankColors = ['#3498db', '#2ecc71', '#e74c3c', '#f39c12', '#9b59b6'];
+        const ctx2 = document.getElementById('banksChart').getContext('2d');
+        banksChart = new Chart(ctx2, {
+            type: 'pie',
+            data: {
+                labels: bankNames,
+                datasets: [{ data: bankCounts, backgroundColor: bankColors.slice(0, topBanks.length) }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: { legend: { position: 'right', labels: { boxWidth: 8, padding: 6, font: { size: 9 } } } }
+            }
+        });
+    }
+    
+    if (statusChart) statusChart.destroy();
+    if (dashboardData.statuses && dashboardData.statuses.length > 0) {
+        const statusNames = dashboardData.statuses.map(s => s.status);
+        const statusCounts = dashboardData.statuses.map(s => s.count);
+        const statusColors = statusNames.map(status => {
+            if (status.includes('DEPLOYED')) return '#2ecc71';
+            if (status.includes('PENDING')) return '#f39c12';
+            if (status.includes('SENT')) return '#3498db';
+            if (status.includes('PRINT')) return '#9b59b6';
+            if (status.includes('CLOSED')) return '#95a5a6';
+            if (status.includes('IBAN')) return '#1abc9c';
+            if (status.includes('HANDED')) return '#e74c3c';
+            if (status.includes('RETURN')) return '#c0392b';
+            if (status.includes('WAITING')) return '#f1c40f';
+            return '#7f8c8d';
+        });
+        const ctx3 = document.getElementById('statusChart').getContext('2d');
+        statusChart = new Chart(ctx3, {
+            type: 'doughnut',
+            data: {
+                labels: statusNames,
+                datasets: [{ data: statusCounts, backgroundColor: statusColors }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: { legend: { position: 'right', labels: { boxWidth: 8, padding: 6, font: { size: 9 } } } }
+            }
+        });
+    }
+}
+
+// ==============================================
+// INITIALIZATION
+// ==============================================
+document.addEventListener('DOMContentLoaded', function() {
+    createEmptyCharts();
+    updateRegionsDisplay();
+    
+    const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+    const now = new Date();
+    const currentMonthIndex = now.getMonth();
+    const currentMonth = months[currentMonthIndex];
+    
+    document.getElementById('fromMonth').value = months[currentMonthIndex - 1] || 'JAN';
+    document.getElementById('toMonth').value = currentMonth;
+    
+    // Load all data on startup
+    loadDashboardData();
+    refreshEmployeeData();
+    refreshRegionData(); // Added: Load region data on startup
+    
+    // Set up auto-refresh intervals
+    // Dashboard auto-refresh every 5 minutes (300000 ms)
+    dashboardRefreshInterval = setInterval(loadDashboardData, 5 * 60 * 1000);
+    
+    // Employee data auto-refresh every 10 minutes (600000 ms)
+    employeeRefreshInterval = setInterval(refreshEmployeeData, 10 * 60 * 1000);
+    
+    // Region data auto-refresh every 10 minutes (600000 ms) - NEW
+    regionRefreshInterval = setInterval(refreshRegionData, 10 * 60 * 1000);
+    
+    // Close modals when clicking outside
+    document.getElementById('regionModal').addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+    });
+    
+    document.getElementById('genericModal').addEventListener('click', function(e) {
+        if (e.target === this) closeGenericModal();
+    });
+});
+
+// Clean up intervals when page is unloaded (optional)
+window.addEventListener('beforeunload', function() {
+    if (dashboardRefreshInterval) clearInterval(dashboardRefreshInterval);
+    if (employeeRefreshInterval) clearInterval(employeeRefreshInterval);
+    if (regionRefreshInterval) clearInterval(regionRefreshInterval);
+});
+</script>
 </body>
 </html>
