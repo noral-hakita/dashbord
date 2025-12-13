@@ -193,6 +193,7 @@
         .status-active { background-color: var(--success); }
         .status-inactive { background-color: var(--danger); }
         .status-onleave { background-color: var(--warning); }
+        .status-left { background-color: var(--gray); }
         .employee-dashboard-panel {
             padding: 15px;
             border: 1px solid var(--border);
@@ -696,16 +697,22 @@ let employeeRegionsData = {}, employeeListCache = {};
 let regionRefreshInterval = null, employeeRefreshInterval = null, dashboardRefreshInterval = null;
 
 // ==============================================
-// DATA STRUCTURES
+// DATA STRUCTURES - UPDATED REGIONS
 // ==============================================
 const regionsData = {
     'NORTH': {
         name: 'North Region', totalForms: 0,
-        cities: { 'ISLAMABAD': { name: 'Islamabad', totalForms: 0 }, 'SKARDU': { name: 'Skardu', totalForms: 0 } }
+        cities: {
+            'ISLAMABAD': { name: 'Islamabad', totalForms: 0 },
+            'RAWALPINDI': { name: 'Rawalpindi', totalForms: 0 },
+            'SKARDU': { name: 'Skardu', totalForms: 0 }
+        }
     },
     'CENTRAL': {
         name: 'Central Region', totalForms: 0,
-        cities: { 'LAHORE': { name: 'Lahore', totalForms: 0 }, 'SUKKAR': { name: 'Sukkar', totalForms: 0 } }
+        cities: {
+            'LAHORE': { name: 'Lahore', totalForms: 0 }
+        }
     },
     'SOUTH': {
         name: 'South Region', totalForms: 0,
@@ -713,38 +720,66 @@ const regionsData = {
             'KARACHI': { 
                 name: 'Karachi', totalForms: 0,
                 locations: [
-                    'BAHRIA TOWN', 'BALDIA TOWN', 'CLIFTON', 'CLIFTON BLOCK 2', 'CREEK WALK',
-                    'DHA', 'EXPO CENTER', 'F.B AREA', 'GOLIMAR', 'GUL PLAZA',
-                    'GULISTAN-E-JOUHAR', 'GULSHAN-E-IQBAL', 'II CHUNDIGARH', 'JODIA BAZAR',
-                    'KEAMARI', 'KORANGI', 'LANDHI', 'LE MARKET', 'LIAQUATABAD', 'LYARI',
-                    'MACHAR COLONY', 'MALIR', 'MANGHOPIR', 'MANZOOR COLONY', 'MARIPURE',
-                    'MAYMAR', 'MEHMOODABAD', 'N.KARACHI', 'N.NAZIMABAD', 'NAZIMABAD',
-                    'ORANGI TOWN', 'PECHS', 'PIB COLONY', 'RT', 'SADDAR', 'SAFOORA',
-                    'SCHEME 33', 'SHABBIRABAD', 'SHAH FAISAL', 'SHAHRAH-E-FAISAL',
-                    'SHERSHAH', 'SITE AREA', 'SULTANABAD', 'SURJANI TOWN', 'TARIQ ROAD'
+                    'ALTAF TOWN', 'BAHADURABAD', 'BAHRIA TOWN', 'BALDIA TOWN', 'BUFFER ZONE',
+                    'CLIFTON', 'CLIFTON BLOCK 2', 'CLIFTON BLOCK 8', 'CREEK WALK', 'DASTAGIR',
+                    'DHA', 'EXPO CENTER', 'F.B AREA', 'FIRDOUS COLONY', 'GARDEN',
+                    'GOLIMAR', 'GUL PLAZA', 'GULISTAN-E-JOUHAR', 'GULSHAN-E-HADEED', 'GULSHAN-E-IQBAL',
+                    'GULSHAN-E-MAYMAR', 'GURUMANDIR', 'HUSSAINABAD', 'II CHUNDIGARH', 'JAMSHED ROAD',
+                    'JODIA BAZAR', 'KEAMARI', 'KHARADAR', 'KORANGI', 'LANDHI',
+                    'LE MARKET', 'LIAQUATABAD', 'LIGHT HOUSE', 'LYARI', 'MACHAR COLONY',
+                    'MALIR', 'MANGHOPIR', 'MANZOOR COLONY', 'MARIPURE', 'MAYMAR',
+                    'MEHMOODABAD', 'MEHRAN TOWN', 'MEMON GOTH', 'MUKAH CHOWK', 'N.KARACHI',
+                    'N.NAZIMABAD', 'NAZIMABAD', 'NEW KARACHI', 'NORTH KARACHI', 'ORANGI TOWN',
+                    'PECHS', 'PIB COLONY', 'QAYUMABAD', 'R T', 'SADDAR',
+                    'SAFOORA', 'SARJANI TOWN', 'SCHEME 33', 'SHABBIRABAD', 'SHAH FAISAL',
+                    'SHAH RASOOL COLONY', 'SHAHRAH-E-FAISAL', 'SHERSHAH', 'SITE AREA', 'SULTANABAD',
+                    'SURJANI TOWN', 'TARIQ ROAD', 'UP MOR'
                 ]
             },
-            'HYDERABAD': { name: 'Hyderabad', totalForms: 0 }
+            'HYDERABAD': { name: 'Hyderabad', totalForms: 0 },
+            'SUKKAR': { name: 'Sukkar', totalForms: 0 }
         }
     }
 };
 
 const mockEmployeeData = {
-    'NORTH': { name: 'North Region', count: 45, cities: { 'ISLAMABAD': { name: 'Islamabad', count: 20 }, 'SKARDU': { name: 'Skardu', count: 25 } } },
-    'CENTRAL': { name: 'Central Region', count: 60, cities: { 'LAHORE': { name: 'Lahore', count: 40 }, 'SUKKAR': { name: 'Sukkar', count: 20 } } },
-    'SOUTH': { name: 'South Region', count: 80, cities: { 'KARACHI': { name: 'Karachi', count: 70 }, 'HYDERABAD': { name: 'Hyderabad', count: 10 } } }
+    'NORTH': { 
+        name: 'North Region', 
+        count: 45, 
+        cities: {
+            'ISLAMABAD': { name: 'Islamabad', count: 15 },
+            'RAWALPINDI': { name: 'Rawalpindi', count: 20 },
+            'SKARDU': { name: 'Skardu', count: 10 }
+        }
+    },
+    'CENTRAL': { 
+        name: 'Central Region', 
+        count: 40,
+        cities: {
+            'LAHORE': { name: 'Lahore', count: 40 }
+        }
+    },
+    'SOUTH': { 
+        name: 'South Region', 
+        count: 100,
+        cities: {
+            'KARACHI': { name: 'Karachi', count: 80 },
+            'HYDERABAD': { name: 'Hyderabad', count: 15 },
+            'SUKKAR': { name: 'Sukkar', count: 5 }
+        }
+    }
 };
 
 const mockEmployeeList = [
     { id: 'emp001', name: 'Ali Khan', contact: '0300-1234567', status: 'Active', forms: 150, region: 'NORTH', city: 'ISLAMABAD', joined: '2023-08-15' },
     { id: 'emp002', name: 'Sara Ahmed', contact: '0321-9876543', status: 'On Leave', forms: 80, region: 'NORTH', city: 'ISLAMABAD', joined: '2024-01-20' },
-    { id: 'emp003', name: 'Raza Mehmood', contact: '0333-5551212', status: 'Active', forms: 210, region: 'NORTH', city: 'ISLAMABAD', joined: '2023-05-01' },
-    { id: 'emp004', name: 'Fatima Zafar', contact: '0345-6667788', status: 'Inactive', forms: 40, region: 'SOUTH', city: 'KARACHI', joined: '2024-03-10' },
+    { id: 'emp003', name: 'Raza Mehmood', contact: '0333-5551212', status: 'Left', forms: 210, region: 'NORTH', city: 'RAWALPINDI', joined: '2023-05-01' },
+    { id: 'emp004', name: 'Fatima Zafar', contact: '0345-6667788', status: 'Active', forms: 40, region: 'SOUTH', city: 'KARACHI', joined: '2024-03-10' },
     { id: 'emp005', name: 'Zain Iqbal', contact: '0312-1112233', status: 'Active', forms: 300, region: 'SOUTH', city: 'KARACHI', joined: '2022-11-25' },
     { id: 'emp006', name: 'Ahmed Raza', contact: '0333-4445555', status: 'Active', forms: 180, region: 'CENTRAL', city: 'LAHORE', joined: '2023-09-10' },
-    { id: 'emp007', name: 'Maria Khan', contact: '0345-7778888', status: 'Active', forms: 95, region: 'CENTRAL', city: 'LAHORE', joined: '2024-02-15' },
-    { id: 'emp008', name: 'Bilal Ahmed', contact: '0301-2223333', status: 'Active', forms: 120, region: 'CENTRAL', city: 'SUKKAR', joined: '2023-11-01' },
-    { id: 'emp009', name: 'Sanaullah', contact: '0332-9990000', status: 'Inactive', forms: 60, region: 'SOUTH', city: 'HYDERABAD', joined: '2024-04-05' },
+    { id: 'emp007', name: 'Maria Khan', contact: '0345-7778888', status: 'Left', forms: 95, region: 'CENTRAL', city: 'LAHORE', joined: '2024-02-15' },
+    { id: 'emp008', name: 'Bilal Ahmed', contact: '0301-2223333', status: 'Active', forms: 120, region: 'SOUTH', city: 'SUKKAR', joined: '2023-11-01' },
+    { id: 'emp009', name: 'Sanaullah', contact: '0332-9990000', status: 'On Leave', forms: 60, region: 'SOUTH', city: 'HYDERABAD', joined: '2024-04-05' },
     { id: 'emp010', name: 'Usman Ali', contact: '0315-8889999', status: 'Active', forms: 250, region: 'SOUTH', city: 'KARACHI', joined: '2022-07-20' }
 ];
 
@@ -841,8 +876,8 @@ async function refreshEmployeeData() {
     try {
         const response = await fetchEmployeeData(N8N_EMPLOYEE_DATA_WEBHOOK, { 
             action: "get_employee_data",
-            fromMonth: "",
-            toMonth: ""
+            fromMonth: document.getElementById('fromMonth').value,
+            toMonth: document.getElementById('toMonth').value
         });
         
         if (response.success) {
@@ -936,8 +971,8 @@ async function openEmployeeCityModal(regionCode, cityCode, event) {
                 action: 'get_employee_list',
                 region: regionCode,
                 city: cityCode,
-                fromMonth: "",
-                toMonth: ""
+                fromMonth: document.getElementById('fromMonth').value,
+                toMonth: document.getElementById('toMonth').value
             });
             if (response.success) {
                 employeeList = response.employees || response.data || [];
@@ -962,7 +997,7 @@ async function openEmployeeCityModal(regionCode, cityCode, event) {
                             const empContact = employee.contact || employee.phone || employee.mobile || 'N/A';
                             const empStatus = employee.status || 'Active';
                             const empForms = employee.forms || employee.formsCount || employee.totalForms || 0;
-                            const statusClass = empStatus.toLowerCase().replace(' ', '');
+                            const statusClass = empStatus.toLowerCase().replace(/\s+/g, '-');
                             return `
                                 <tr onclick="openEmployeeDashboardModal('${empId}', '${empName.replace(/'/g, "\\'")}', event)">
                                     <td>${empName}</td>
@@ -1002,8 +1037,8 @@ async function openEmployeeDashboardModal(employeeId, employeeName, event) {
         const response = await fetchEmployeeData(N8N_EMPLOYEE_DETAIL_WEBHOOK, {
             action: 'get_employee_forms_graph',
             employeeId: employeeId,
-            fromMonth: "",
-            toMonth: ""
+            fromMonth: document.getElementById('fromMonth').value,
+            toMonth: document.getElementById('toMonth').value
         });
 
         if (!response.success) throw new Error('Failed to load employee detail from webhook');
@@ -1033,7 +1068,7 @@ async function openEmployeeDashboardModal(employeeId, employeeName, event) {
                 <div class="employee-info-row">
                     <span class="employee-info-label">Status:</span>
                     <span class="employee-info-value">
-                        <span class="employee-status-badge status-${(detail.status || 'Active').toLowerCase().replace(' ', '')}">
+                        <span class="employee-status-badge status-${(detail.status || 'Active').toLowerCase().replace(/\s+/g, '-')}">
                             ${detail.status || 'Active'}
                         </span>
                     </span>
